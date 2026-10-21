@@ -1,0 +1,43 @@
+{
+  "protocol_version": "0.2.0",
+  "context": "Continue iterative development in the current software repository; do not modify unrelated repositories.",
+  "actions": [
+    {
+      "id": "continue",
+      "key": "0",
+      "title": "Continue",
+      "instruction": "Continue the agreed implementation plan without expanding scope.",
+      "parameters": [
+        {
+          "id": "notes",
+          "label": "Additional instructions",
+          "type": "text",
+          "default": "",
+          "multiline": true
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "key": "1",
+      "title": "Verify",
+      "instruction": "Run relevant checks and report verified results.",
+      "parameters": [
+        {
+          "id": "depth",
+          "label": "Verification depth",
+          "type": "integer",
+          "min": 1,
+          "max": 5,
+          "default": 3
+        },
+        {
+          "id": "include_integration",
+          "label": "Include integration tests",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
