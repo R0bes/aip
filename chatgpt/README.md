@@ -12,7 +12,7 @@ Put compact next-run cards at the **very end**; nothing follows. The whole main 
 
 ## Supplemental text
 
-Use **one** focusable text field inside each next-run card. Empty state: a large copy icon displayed **inside** the field as a paste cue. Filled state: **all text remains visible and directly editable**, with multiline growth as needed. No separate + control, shortened preview, expand/collapse state, confirm button, or helper caption. The text is forwarded verbatim in a self-contained next-turn request.
+Use **one** focusable text field inside each next-run card. Empty state: a large copy icon displayed **inside** the field as a paste cue. Filled state: **all text remains visible and directly editable**, with multiline growth as needed. Style this field with a transparent background, no border or outline, and smaller compact typography. No separate + control, shortened preview, expand/collapse state, confirm button, or helper caption. The text is forwarded verbatim in a self-contained next-turn request.
 
 ## Settings and fallback
 
