@@ -21,6 +21,13 @@ This is the **Cyberpunk** preset example. Substitute verified repository/ref and
 
 The speech-bubble icon belongs to the existing shared Next Run input, not this header. Its appearance may use the selected theme's accent color if supported, but do **not** introduce a styled input container or alter the text field itself.
 
-## Optional compact configuration disclosure (proposed)
+## Compact header configuration (accepted interaction)
 
-Keep the approved Cyberpunk header and Next Run styling unchanged. A subtle settings icon at the far right may expand a small panel directly below the header, collapsed by default. Initially offer a theme switcher (Cyberpunk, Pastel, Neutral). Apply the selected semantic tokens consistently to header, GitHub result, suggestions, input and Next Run trigger within the current response. This is ephemeral local UI state, not a persistent account preference or cross-message setting. Prefer a native DIL disclosure control or simple local AppBlock interaction; do not add a renderer, service or storage. Preserve the orientation-only identity line; settings are a separate optional control. Validate appearance and theme synchronization before making it the default.
+Place a subtle **classic gear** icon (`<icon name="settings"/>`) at the far right of the identity header. Clicking it expands a compact panel directly below the identity row; it is collapsed by default. Keep the approved Cyberpunk styling as the initial presentation and retain the identity line's orientation-only purpose.
+
+The panel initially offers theme selection (Cyberpunk, Pastel, Neutral) and an explicit scope choice:
+
+- **Current conversation:** Update all theme-aware components in this rendered response via shared DIL state, and include the chosen theme as a self-contained parameter in the next-run dispatch. Each subsequent run must apply that parameter consistently. This is handoff propagation, **not** durable global storage or a promise of automatic persistence outside the chain.
+- **Save as AIP default:** Explicitly request a repository configuration change in the next run. The UI cannot directly mutate GitHub; only a subsequent authorized agent action can edit the authoritative theme default, verify the commit and report success. Do not claim that clicking a setting alone saved it.
+
+No settings service, local storage, new renderer or cross-chat persistence. Use the existing semantic tokens in `themes/README.md`. The gear is a native DIL control, and the expanded panel can be a compact native layout. Keep theme selection separate from task selection and preserve the native Next Run pressable for dispatch.
