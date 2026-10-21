@@ -27,6 +27,4 @@ Place a subtle classic gear icon (`<icon name="settings"/>`) at the far right of
 
 Offer theme selection (Cyberpunk, Pastel, Neutral), applied immediately to all theme-aware components in the current response through shared DIL state. The chosen theme is also included as a self-contained parameter in the next-run handoff.
 
-Offer an optional **agent preference** instruction: ask the receiving agent to adopt the chosen theme in its own general instructions/preferences *if the agent has a supported way to do so*. This is an instruction to the agent, not an AIP repository change. Do not claim the agent's rules were modified without confirmation. If unsupported, continue carrying the theme in next-run prompts.
-
-Do **not** offer a "Save as AIP default" repository-setting action. No settings service, AIP persistence, local storage, new renderer or cross-chat persistence. Use existing semantic tokens in `themes/README.md`; keep theme choice separate from task selection and preserve native Next Run dispatch.
+Do **not** offer a "Save as AIP default" repository-setting action. The panel must not include agent-personal-rule controls or instructions; users manage their own agent preferences outside AIP. No settings service, AIP persistence, local storage, new renderer or cross-chat persistence. Use existing semantic tokens in `themes/README.md`; keep theme choice separate from task selection and preserve native Next Run dispatch.
