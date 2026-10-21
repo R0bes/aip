@@ -17,3 +17,7 @@ These are subjective self-assessments, not verified metrics. A separate human ra
 ## Guidance continuity
 
 Each self-contained follow-up request SHOULD identify the AIP version and the relevant profile or pinned revision. A host that supports retrieving rules may refresh them when a version changes, on explicit request, or when instructions seem to drift. Do not claim automatic reload, freshness, or persistent memory without actual evidence. A configurable periodic recheck or countdown may be explored later, but is not required by the protocol.
+
+## Rating interpretation
+
+A rating is not actionable without a named dimension and a defined scale. Separate **run outcome quality** from **interface relevance** (whether cards, options, and suggestions earned their space). Do not infer precise option relevance from an undifferentiated overall 4/5. Store agent estimates and human ratings as separate observations; a difference is a calibration signal, not proof that either estimate is correct. Keep both ratings optional.
