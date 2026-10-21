@@ -4,7 +4,8 @@ AIP is a small convention for **iterative ChatGPT collaboration on user-owned Gi
 
 The [`AGENTS.md`](AGENTS.md) file is the **single authoritative instruction source**. The component templates are:
 
-- [GitHub result](components/github-result.md) — retained, design refinement pending
+- [GitHub cards](components/github-result.md) — verified changes, open pull requests and branch overviews
+- [Plan / Progress](components/plan-progress.md) — numbered multi-run work packages and grounded status
 - [Next Run](components/next-run.md) — accepted hybrid HTML selection/input with native dispatch
 - [Agent proposal](components/proposal.md) — experimental
 
