@@ -35,19 +35,19 @@ This snippet shows the important binding boundary. Replace `UNIQUE` consistently
     <pressable width="44px" height="44px" background="#F4F5F7"
       border={{size:1,color:"#4B647D"}} radius="full" align="center"
       justify="center" tooltip="Nächsten Run starten" onClick={()=>{
-        const prefix=instruction.match(/^\\s*([0-9])\\s*:/);
+        const prefix=instruction.match(/^\s*([0-9])\s*:/);
         const key=prefix&&actions.some(a=>a.id===prefix[1])?prefix[1]:selection.selected;
         const action=actions.find(a=>a.id===key);
         if(!action)return;
         const params={...(selection.params[key]||{}),theme};
         GenUI.issueNewTurn(
-          "Repository: R0bes/aip\\nBranch: main\\nProposed task: "+action.task+
-          "\\nAction: "+action.title+"\\nKey: "+key+
-          "\\nParameters: "+JSON.stringify(params)+
-          "\\nProposal context: "+action.context+
-          "\\n\\nUser instruction (verbatim):\\n"+instruction+
-          "\\n\\n[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]"+
-          "\\nRead R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh."
+          "Repository: R0bes/aip\nBranch: main\nProposed task: "+action.task+
+          "\nAction: "+action.title+"\nKey: "+key+
+          "\nParameters: "+JSON.stringify(params)+
+          "\nProposal context: "+action.context+
+          "\n\nUser instruction (verbatim):\n"+instruction+
+          "\n\n[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]"+
+          "\nRead R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh."
         );
       }}>
       <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none"
@@ -113,7 +113,7 @@ render();
 </div>
 ```
 
-The three inline palettes above illustrate the values from the authoritative CSV. Do not create a competing token specification.
+The inline palette literals are generated examples copied from the authoritative CSV; update them whenever `themes/tokens.csv` changes. They are not an independent token source.
 
 ## Compact selectable cards — AppBlock HTML
 
