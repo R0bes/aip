@@ -1,6 +1,6 @@
 # ChatGPT adapter — AIP 0.3.0 draft
 
-ChatGPT is AIP's first renderer and dispatch adapter, not the platform-neutral protocol. See [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md). Repository instructions are not automatically loaded or synchronized.
+ChatGPT collaboration on GitHub repositories is AIP's primary target experience, including across separate conversations. The goal is readable verified results and practical next-run suggestions, not an agent runtime or background synchronization system. See [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md). Repository instructions are not automatically loaded or synchronized.
 
 ## Rendering
 
