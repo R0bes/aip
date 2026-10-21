@@ -15,11 +15,12 @@ AIP's primary use case is collaborative software development with ChatGPT on Git
 - [chatgpt/README.md](chatgpt/README.md) — ChatGPT rendering/dispatch guidance.
 - [chatgpt/output.md](chatgpt/output.md) — ChatGPT run-output presentation and copy semantics.
 - [chatgpt/examples.md](chatgpt/examples.md) — example report layout.
+- [chatgpt/quick.md](chatgpt/quick.md) — minimal per-run rules.
 - [chatgpt/software-development.md](chatgpt/software-development.md) — initial profile for collaborative iterative software development.
 - [chatgpt/settings.md](chatgpt/settings.md) — settings interaction (draft; no persistence/sync yet).
 - [AGENTS.md](AGENTS.md) — maintenance instructions.
 
-The current product focus is ChatGPT conversations working on arbitrary GitHub repositories. Keep reusable rules in the concise `chatgpt/software-development.md` and instruct every next run to re-read that profile when GitHub access is available. Do not expand toward generic agent infrastructure unless a concrete user need warrants it.
+The current product focus is ChatGPT conversations working on arbitrary GitHub repositories. Keep per-run rules in `chatgpt/quick.md`, full reference in `chatgpt/software-development.md`, and instruct every next run to re-read the quick profile when GitHub access is available. Do not expand toward generic agent infrastructure unless a concrete user need warrants it.
 
 ## Feedback and continuity
 
