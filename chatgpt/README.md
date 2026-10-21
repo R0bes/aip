@@ -1,29 +1,26 @@
-# ChatGPT adapter
+# ChatGPT adapter — AIP 0.3.0 draft
 
-ChatGPT is AIP's first concrete rendering/dispatch target, **not** part of the core protocol.
+ChatGPT is AIP's first renderer and dispatch adapter, not part of the platform-neutral core. Load [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md) when applicable. A public repository is not automatically loaded or synchronized.
 
-When available, render compact buttons and action-local checkbox, select, slider, and multiline text controls. Do not show a permanent generic additional-instructions textarea by default. Instead, provide a small paste affordance when supplemental text is useful. Prefer one-click clipboard paste only where host APIs and permission allow; otherwise reveal a field for user-driven paste (e.g. mouse context menu). Do not claim direct clipboard access in ChatGPT without verifying it. The pasted text must be visible/reviewable and forwarded verbatim. On an explicit user action, send a new self-contained turn containing the chosen action ID, complete instruction, explicit parameter values, verbatim additional user text, and necessary project context.
+## Rendering contract
 
-Use numbered text fallback if controls are unavailable. Never silently invoke an action. The action selector belongs at the end of the response.
+- Begin the actual answer with one lightly outlined context header. Show repository/ref only when known, one compact version label, and an icon-only **gear** settings affordance.
+- Use ordinary prose and inline result cards as warranted. Card titles describe the actual content, **not** the card type. Use a consistent visual weight and size for all leading icons.
+- Result cards may expand on clicking their main surface; a dedicated chevron is unnecessary. Hover/focus may subtly change the border or background. Nested copy controls never toggle expansion.
+- Use generic copyable artifacts with optional titles/descriptions, and optional compact GitHub cards for changes, comparisons, commits, PRs or other GitHub interactions.
+- Only meaningful next-run action cards appear at the **very end**. No prose follows. Do not force exactly two cards or a scope selector.
+- An action without editable controls can dispatch on whole-card click. An action with inputs must protect editing from accidental dispatch; use a compact icon-only confirm control if necessary.
+- Use a small **always-mounted focusable input** per action to support first-click mouse paste. Preserve captured text verbatim; collapse it to a short in-place editable preview. Do not show a second editor or an edit pencil. Never claim clipboard-read or attachment support that the host does not provide.
+- Put the actual project task first in dispatched messages and unobtrusive AIP metadata last.
 
-Available UI capabilities vary by ChatGPT client; a repository file or global instruction cannot guarantee that every agent loads this specification.
+## Settings
 
-See [software-development.md](software-development.md) for the initial domain profile. Future profiles and renderers may coexist.
+The header gear is a **local interface-preferences affordance** (e.g. density, detail expansion, copy/report formatting, optional prompts) when the host can actually change those choices. It must never silently alter repository files, platform account settings, permissions or protocol versions. If no functional settings exist, omit or disable the gear rather than displaying a fake control. Persistence and sync are not implemented.
 
-## Discoverability
+## Copy and attachments
 
-A ChatGPT agent can be asked to read `https://github.com/R0bes/aip`, starting with `README.md`, `protocol.md`, and this adapter's profile. For software-development tasks, it may consult this public repository when available and relevant; no automatic loading or live synchronization is guaranteed. If it cannot access the repository, it should say so rather than claim compliance.
+Copy controls use an icon with accessible label and tooltip. A report export must serialize grounded run data and selected values, not assume the platform's native copy-response preserves interactive widgets. File/screenshot attachment transfer is not implemented in this draft; do not simulate an upload button.
 
-## Compact footer
+## Fallback
 
-Show a small version reference such as `AIP 0.3.0` near the final action selector, and a visually secondary settings control (gear icon if available). The settings control starts a new, explicit settings interaction, never silently modifies host settings. See `settings.md`.
-
-## Run-card layout (software-development profile)
-
-Prefer horizontally arranged, responsive compact run cards with a clean, restrained aesthetic. Present next-run proposals as compact, information-rich cards. A simple proposal can be one clickable card; a proposal containing sliders, checkboxes or choices uses a separate Go button. Paste is **per-card** with independent supplemental text; clicking Paste must not activate the parent card. When supplemental text is opened, switch the card to explicit Go submission. Keep only Settings in the right-aligned, bottom-aligned utility rail alongside the version label. Use subtle accent colors and avoid excessive decoration. These are adapter/profile presentation rules, not requirements of the platform-neutral protocol.
-
-### Mouse-first details and paste limitation
-
-Titles and icons share the card header; keyboard shortcut numbers are secondary corner metadata. Cards may have different widths. Descriptions must name actual tasks, boundaries, or expected outputs rather than explain the button label. A clipboard-injecting mouse action can target the ChatGPT composer before an on-demand textarea appears; opening the field after that click does not solve the race. Direct clipboard capture is unsupported unless the host exposes an authorized clipboard API. Do not silently read clipboard or pretend the fallback is one-click.
-
-For report components and reliable cross-agent copying, see [output.md](output.md). For a concrete example, see [examples.md](examples.md).
+Use concise numbered text actions if the host cannot render the controls. Only an explicit user gesture dispatches a self-contained follow-up request.
