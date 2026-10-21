@@ -6,7 +6,7 @@ Requires: pip install jsonschema
 import json
 from pathlib import Path
 
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,13 +44,8 @@ def main() -> None:
         try:
             Draft202012Validator(schema).validate(candidate)
             validate_semantics(candidate)
-        except (AssertionError, ValueError):
+        except (AssertionError, ValueError, ValidationError):
             print("PASS:", name)
-        except Exception as error:
-            if error.__class__.__module__.startswith("jsonschema"):
-                print("PASS:", name)
-            else:
-                raise
         else:
             raise AssertionError("accepted invalid example: " + name)
 
@@ -60,6 +55,11 @@ def main() -> None:
     must_reject("invalid integer default", lambda x: x["actions"][1]["parameters"][0].update(default=99))
     must_reject("invalid enum default", lambda x: x["actions"][1]["parameters"].append({"id":"mode","type":"enum","choices":["a"],"default":"b"}))
     must_reject("duplicate parameter", lambda x: x["actions"][1]["parameters"].append(dict(x["actions"][1]["parameters"][0])))
+    must_reject("key zero used by non-continue", lambda x: x["actions"][0].update(id="other"))
+    must_reject("continue with nonzero key", lambda x: x["actions"][0].update(key="2"))
+    must_reject("inverted integer bounds", lambda x: x["actions"][1]["parameters"][0].update(min=6, max=1))
+    must_reject("duplicate enum choices", lambda x: x["actions"][1]["parameters"].append({"id":"mode","type":"enum","choices":["a","a"],"default":"a"}))
+    must_reject("missing action instruction", lambda x: x["actions"][0].pop("instruction"))
     print("PASS: schema, example, semantic checks")
 
 
