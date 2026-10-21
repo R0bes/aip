@@ -11,7 +11,7 @@ Read [AGENTS.md](../../AGENTS.md) first. **GitHub cards are a family of contextu
 - Repository and ref must be grounded in fetched data. Distinguish **verified**, **pending/unverified**, and **blocked**; never invent a check result, PR state, branch relationship or commit.
 - Choose from **Change result**, **Open pull requests**, **Branches**. The latter two are repository snapshots, not automatically complete: show retrieval scope/time when relevant, and say when pagination or access limits prevent completeness.
 - Each card has a clear icon, specific title, concise useful rows and small secondary metadata. Link PRs/branches/commits to verified GitHub URLs where available. Use small neutral labels; avoid a rainbow of statuses.
-- Use separate cards when information differs in purpose. Avoid empty sections. The **Plan / Progress** card is a separate component in [plan-progress.md](../plan-progress/COMPONENT.md).
+- Use separate cards when information differs in purpose. Avoid empty sections. The **Plan / Progress** card is a separate component in [Plan / Progress](../plan-progress/COMPONENT.md).
 - Prefer native DIL components for simple cards; no custom HTML, duplicated renderers, or additional persistence.
 
 ## Variant A: verified change result
