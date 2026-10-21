@@ -51,3 +51,12 @@ Keep a **single** AIP version reference in the top context header, with an icon-
 For each card, a tiny round `+` is the visible face of an always-mounted focusable input. On input, render the user-supplied text as a **non-editable preview** elsewhere in that card; keep the input accessible for editing and show a clear focused state. A host may not permit an input to be truly icon-sized and still reliably accept mouse paste; test actual focus/paste behavior and use a slightly larger focus target if necessary. Text remains isolated to that action.
 
 AIP is third-party UI infrastructure in other projects: generated follow-up requests put the project task and its scope first, and a short unobtrusive AIP metadata footer last. Do not make AIP the subject of an unrelated project's prompt.
+
+## Card interaction and feedback refinement
+
+- Place a subtly outlined context header first, followed by ordinary prose with optional inline result cards, and **next-run cards strictly last**. No text or other components follow the next-run selector. Cards can be interspersed wherever they clarify the narrative; not all prose needs to become cards.
+- Size cards to content and purpose; do not force GitHub/result cards to full width. Keep coherent visual proportions within a response.
+- For **result cards**, clicking the card expands/collapses its optional details. Provide the same detail expansion affordance across other card types when useful. Nested copy/feedback buttons must not trigger expansion.
+- For **next-run cards**, clicking a parameterless card invokes it; when configuration or user text exists, require an explicit bottom-right icon-only check/confirm button, after the content. Never use a prominent text `Go` button. Keep configuration controls distinct from click-to-dispatch surfaces.
+- The tiny always-mounted `+` text entry captures pasted text into action-local state. After capture, show only a compact truncated preview (prefix and optionally suffix with ellipsis), not the full text. Clicking the preview opens editing of the full value. The initial input should appear empty/compact again after capture, but must not lose the stored text. Preserve the entire text verbatim when dispatching.
+- Support optional, independent thumbs-up/thumbs-down feedback on **individual cards**, with no obligation to rate all cards. This is an evaluation of the specific card, not the whole answer. Do not infer run quality from a card rating. Feedback collection should not invoke an action.
