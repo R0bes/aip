@@ -18,7 +18,7 @@ During AIP development, an agent MAY offer explicitly labeled, subjective self-a
 
 ## Guidance continuity
 
-Follow-up requests may carry a compact AIP version/profile footer. Refresh instructions on explicit request, version change, or suspected drift when retrieval is available. Do not claim automatic reloading, persistent settings or remote feedback storage without evidence.
+Follow-up requests may carry a compact AIP version/profile footer. For the ChatGPT GitHub-development profile, re-read the compact primary profile at the start of each run when retrieval is available; other supporting documentation can be refreshed on explicit request, version change, or suspected drift. Do not claim automatic reloading, persistent settings or remote feedback storage without evidence.
 
 ## Drift-aware next-run handoff
 
