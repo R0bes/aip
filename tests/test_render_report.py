@@ -31,7 +31,7 @@ class ReportRendererTests(unittest.TestCase):
         self.assertIn("Supplemental text (verbatim):", output)
         self.assertIn("${supplemental_text}", output)
         self.assertIn("[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]", output)
-        self.assertIn("If AIP instructions are missing, uncertain, or inconsistent", output)
+        self.assertIn("Read the AIP ChatGPT profile from the repository at the start of this run when access is available", output)
         self.assertNotIn("fetch(", output)
         self.assertNotIn("window.location.reload", output)
 
