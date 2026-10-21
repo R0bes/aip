@@ -1,14 +1,14 @@
 # Next Run — accepted hybrid UI
 
-Read [AGENTS.md](../AGENTS.md). This is the **only current Next Run template**. The former HTML experiment is superseded and must not be used. Preserve the agreed visual and interaction model rather than replacing it with a plain DIL input.
+Read [AGENTS.md](../AGENTS.md). This is the **only current Next Run template**. The former HTML experiment has been removed. Preserve the agreed visual and interaction model rather than replacing it with a plain DIL input.
 
 ## Contract
 
 - Offer a curated number of compact selectable action cards, with 20px icon beside title, small numeric key, useful description and optional action-specific controls. Equal-height siblings; selected card gets only an accent outline and subtle glow. Key `0` continues useful work. Use a scoped HTML AppBlock for cards when needed.
-- **One shared real HTML textarea**, initially a **40×40px circular icon**. The idle SVG contains **three audio bars, an I-beam cursor, and a separate lower arrow**. Focusing the textarea expands the *same element* into a normal editable multi-line field. Empty + blurred collapses; nonempty + blurred stays expanded. Normal selection, paste, caret and input must work. A permanently visible DIL `<input>`/`<textarea>` is **not equivalent**.
+- **One shared real HTML textarea**, initially a **40×40px circular icon**. The idle SVG is [transcription-input.svg](../assets/transcription-input.svg): **three audio bars, an I-beam cursor, and a separate lower arrow**. Focusing the textarea expands the *same element* into a normal editable multi-line field. Empty + blurred collapses; nonempty + blurred stays expanded. Normal selection, paste, caret and input must work. A permanently visible DIL `<input>`/`<textarea>` is **not equivalent**.
 - To its right, keep **one native DIL `<pressable>`**, 44px circle, with the custom circular-arrow/play SVG in [assets/next-run.svg](../assets/next-run.svg). Only this native control calls `GenUI.issueNewTurn`; AppBlock HTML cannot dispatch a ChatGPT turn.
 - DIL owns shared selection, text, action parameters and theme state. Bind AppBlocks through `bind={{value,setValue}}`; `globalThis.__bindings?.…` and `globalThis.__effect?.(…)` must always be optional-chained.
-- Include the theme chosen in the header gear panel in the next-run parameters, e.g. `{theme:"Neutral"}`. Theme changes recolor all theme-aware components immediately, using [themes/tokens.csv](../themes/tokens.csv); no persistent settings.
+- Include the theme chosen in the header gear panel in the next-run parameters, e.g. `{theme:"Neutral"}`. Theme changes recolor all theme-aware components immediately, using [themes/themes.css](../themes/themes.css); no persistent settings.
 - Dispatch a self-contained request: repository/ref, proposed task, action/key, parameters, proposal context, exact `User instruction (verbatim)` textarea content, AIP footer and the required AGENTS.md refresh instruction. A leading valid `N:` selects that action **without altering the original textarea text**. Never claim HTML-only Enter sends or that file attachments can be forwarded.
 
 ## DIL composition (generation template)
@@ -113,7 +113,7 @@ render();
 </div>
 ```
 
-The inline palette literals are generated examples copied from the authoritative CSV; update them whenever `themes/tokens.csv` changes. They are not an independent token source.
+The inline palette literals are examples mirrored from the authoritative CSS; update them whenever `themes/themes.css` changes. They are not an independent token source.
 
 ## Compact selectable cards — AppBlock HTML
 
