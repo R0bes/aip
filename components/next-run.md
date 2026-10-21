@@ -14,13 +14,15 @@ Generate this structure in a ChatGPT response. It is illustrative JSX-like sourc
     <text size="xs" color="tertiary">{actionKey}</text>
   </row>
   <text size="sm" color="secondary">{actionDescription}</text>
-  <textarea value={extra} onChange={setExtra} placeholder="⧉" rows={1} autoResize/>
-  <row justify="end">
-    <button size="sm" onClick={() => GenUI.issueNewTurn(handoff(extra))}>
-      <icon name="rocket" inline/> Execute
+  <row align="end" gap={2}>
+    <box flex="1">
+      <textarea value={extra} onChange={setExtra} placeholder="⧉" rows={1} autoResize/>
+    </box>
+    <button size="sm" uniform label="Run next action" onClick={() => GenUI.issueNewTurn(handoff(extra))}>
+      <icon name="rocket"/>
     </button>
   </row>
 </box>
 ```
 
-Only 🚀 Execute dispatches. `handoff(extra)` preserves the textarea value verbatim and follows the self-contained request format and AGENTS.md propagation rule. Key `0` is continuation.
+Only the icon-only 🚀 button dispatches. `handoff(extra)` labels the unchanged textarea value as `User instruction (verbatim)` and treats it as the primary user instruction, while the card's proposed task is context/default. Follow the self-contained request format and AGENTS.md propagation rule. Key `0` is continuation.
