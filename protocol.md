@@ -6,6 +6,10 @@ Version: **0.3.0 (draft)**
 
 A portable contract for human selection and configuration of follow-up agent actions after a run. AIP is not an agent-to-agent transport, GUI toolkit, or authorization mechanism.
 
+## Run output
+
+AIP also defines optional run-output elements: context header, change summary, local command, agent handoff, and copyable report. See [output.md](output.md). A report is not required to contain every element; use only elements grounded in actual work.
+
 ## Run completion
 
 Report completed work, verification actually performed, blockers, and remaining work. If useful next actions exist, place the selector last; no prose follows it.
