@@ -21,3 +21,7 @@ Show a small version reference such as `AIP 0.3.0` near the final action selecto
 ## Run-card layout (software-development profile)
 
 Prefer horizontally arranged, responsive compact run cards with a clean, restrained aesthetic. Present next-run proposals as compact, information-rich cards. A simple proposal can be one clickable card; a proposal containing sliders, checkboxes or choices uses a separate Go button. Paste is **per-card** with independent supplemental text; clicking Paste must not activate the parent card. When supplemental text is opened, switch the card to explicit Go submission. Keep only Settings in the right-aligned, bottom-aligned utility rail alongside the version label. Use subtle accent colors and avoid excessive decoration. These are adapter/profile presentation rules, not requirements of the platform-neutral protocol.
+
+### Mouse-first details and paste limitation
+
+Titles and icons share the card header; keyboard shortcut numbers are secondary corner metadata. Cards may have different widths. Descriptions must name actual tasks, boundaries, or expected outputs rather than explain the button label. A clipboard-injecting mouse action can target the ChatGPT composer before an on-demand textarea appears; opening the field after that click does not solve the race. Direct clipboard capture is unsupported unless the host exposes an authorized clipboard API. Do not silently read clipboard or pretend the fallback is one-click.
