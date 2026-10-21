@@ -1,8 +1,8 @@
 # AIP — Agent Interaction Protocol
 
-AIP defines portable run-output artifacts and structured human decisions between iterative agent runs: results, changes, copyable commands and handoffs, next actions, parameters, and self-contained follow-up invocations.
+AIP's primary use case is collaborative software development with ChatGPT on GitHub repositories. It makes verified results easy to read, presents meaningful next-step suggestions as compact interactive cards, and preserves task context and presentation guidance across follow-up runs and separate ChatGPT conversations.
 
-**Status:** experimental draft v0.3.0. **Scope:** platform-neutral interaction semantics; not a GUI framework, transport protocol, or authorization system.
+**Status:** experimental draft v0.3.0. **Priority:** the ChatGPT software-development profile, clear results, useful next-run cards, and reliable handoff. Protocol schemas and the standalone renderer support this experience; they are not ends in themselves. Agent runtimes, cross-platform synchronization, and general infrastructure are not project goals.
 
 ## Layout
 
@@ -19,7 +19,7 @@ AIP defines portable run-output artifacts and structured human decisions between
 - [chatgpt/settings.md](chatgpt/settings.md) — settings interaction (draft; no persistence/sync yet).
 - [AGENTS.md](AGENTS.md) — maintenance instructions.
 
-The core remains renderer-neutral. ChatGPT is the first concrete adapter; other adapters may be added later. Existing standards such as A2UI may inform future renderers, but are not required dependencies.
+The current product focus is ChatGPT conversations working on arbitrary GitHub repositories. Keep reusable rules in `chatgpt/software-development.md` and link to them in follow-up prompts. Do not expand toward generic agent infrastructure unless a concrete user need warrants it.
 
 ## Feedback and continuity
 
