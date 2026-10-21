@@ -25,3 +25,5 @@ Prefer horizontally arranged, responsive compact run cards with a clean, restrai
 ### Mouse-first details and paste limitation
 
 Titles and icons share the card header; keyboard shortcut numbers are secondary corner metadata. Cards may have different widths. Descriptions must name actual tasks, boundaries, or expected outputs rather than explain the button label. A clipboard-injecting mouse action can target the ChatGPT composer before an on-demand textarea appears; opening the field after that click does not solve the race. Direct clipboard capture is unsupported unless the host exposes an authorized clipboard API. Do not silently read clipboard or pretend the fallback is one-click.
+
+For report components and reliable cross-agent copying, see [output.md](output.md). For a concrete example, see [examples.md](examples.md).
