@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/R0bes/aip/blob/main/run-ui.schema.json",
+  "title": "AIP action selector v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "context",
+    "actions"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "0.2.0"
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/action"
+      }
+    }
+  },
+  "$defs": {
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "key",
+        "title",
+        "instruction"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instruction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "recommended": {
+          "type": "boolean"
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        }
+      }
+    },
+    "parameter": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type",
+            "default"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "type": {
+              "const": "boolean"
+            },
+            "default": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type",
+            "min",
+            "max",
+            "default"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "type": {
+              "const": "integer"
+            },
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            },
+            "default": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type",
+            "choices",
+            "default"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "type": {
+              "const": "enum"
+            },
+            "choices": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "default": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type",
+            "default"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "type": {
+              "const": "text"
+            },
+            "default": {
+              "type": "string"
+            },
+            "multiline": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
