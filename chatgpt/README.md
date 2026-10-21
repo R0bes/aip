@@ -17,3 +17,7 @@ A ChatGPT agent can be asked to read `https://github.com/R0bes/aip`, starting wi
 ## Compact footer
 
 Show a small version reference such as `AIP 0.3.0` near the final action selector, and a visually secondary settings control (gear icon if available). The settings control starts a new, explicit settings interaction, never silently modifies host settings. See `settings.md`.
+
+## Run-card layout (software-development profile)
+
+Present next-run proposals as compact, information-rich cards. A simple proposal can be one clickable card; a proposal containing sliders, checkboxes or choices uses a separate Go button. Keep the two icon-only utilities (Paste, Settings) in a right-aligned vertical rail, aligned to the bottom alongside the version label. Use subtle accent colors and avoid excessive decoration. These are adapter/profile presentation rules, not requirements of the platform-neutral protocol.
