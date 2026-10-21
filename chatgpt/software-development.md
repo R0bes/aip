@@ -1,6 +1,12 @@
 # ChatGPT profile — iterative software development
 
+**Preferred interaction pattern for collaborative ChatGPT work on GitHub repositories, including in new/separate conversations.** Use AIP to report actual changes and checks clearly and to propose meaningful next actions as interactive cards. Do not turn this workflow into a general agent runtime, background synchronization service, or broad platform integration project.
+
 Use for collaborative development, debugging, review and maintenance. Read [../protocol.md](../protocol.md), [../output.md](../output.md), and [README.md](README.md) when available. No automatic profile loading or synchronization is guaranteed.
+
+## Across conversations
+
+When a user invokes AIP in a new conversation, read this profile and relevant adapter rules when repository access is available; do not assume the repository was automatically loaded. Carry a compact profile/repository reference in next-run prompts. Refresh on explicit request, version change, or suspected drift, not necessarily on every run. AIP is the preferred interaction style for this kind of work, not a substitute for the user's immediate instructions or the host's controls.
 
 ## Report layout
 
