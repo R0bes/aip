@@ -4,6 +4,10 @@
 
 Ordinary conversational feedback is the default. **Do not render per-card thumbs-up/down** in the current ChatGPT software-development profile. No implicit telemetry, persistence or inferred rating is allowed.
 
+## Scope discipline
+
+Judge suggestions by whether they improve the ChatGPT GitHub-development experience: verified results, helpful next-run cards, or continuity across runs and conversations. Prefer small usability fixes over generic protocol or runtime infrastructure. Do not invent proposals just to populate cards.
+
 ## Optional improvement proposals
 
 Offer a concrete improvement proposal for the active project or AIP only when it is worth the user's attention. Include expected benefit and trade-off, without quotas. No proposal is preferable to filler.
