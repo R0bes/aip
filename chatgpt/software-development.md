@@ -43,3 +43,11 @@ Use a GitHub icon for repository change summaries, not a generic checkmark. Appl
 Offer **optional** improvement suggestions only when concrete and worthwhile, for the project or AIP itself. Never manufacture suggestions or follow-up options to fill space. During AIP design iterations, an optional compact self-assessment can score output quality and suggestion relevance, explicitly as a subjective estimate rather than measured fact; invite the user's independent rating to calibrate thresholds. See [feedback.md](feedback.md).
 
 Before generating a selector, check whether the current AIP guidance is available and coherent. If the profile appears missing or contradictory, reload the pinned profile if accessible or ask for it. Do not silently claim fresh sync. A lightweight revision marker can travel in self-contained follow-up prompts; periodic rechecks may be configured later, but a decrementing counter is not required.
+
+## Updated composition
+
+Keep a **single** AIP version reference in the top context header, with an icon-only Settings control in that header; remove the bottom-right utility rail. Number of next-run cards is **zero or more**, driven by meaningful choices; never force exactly two. Prefer mouse-first clean coordinated cards, with flexible widths and optional expanded detail.
+
+For each card, a tiny round `+` is the visible face of an always-mounted focusable input. On input, render the user-supplied text as a **non-editable preview** elsewhere in that card; keep the input accessible for editing and show a clear focused state. A host may not permit an input to be truly icon-sized and still reliably accept mouse paste; test actual focus/paste behavior and use a slightly larger focus target if necessary. Text remains isolated to that action.
+
+AIP is third-party UI infrastructure in other projects: generated follow-up requests put the project task and its scope first, and a short unobtrusive AIP metadata footer last. Do not make AIP the subject of an unrelated project's prompt.
