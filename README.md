@@ -18,3 +18,7 @@ AIP defines portable run-output artifacts and structured human decisions between
 - [AGENTS.md](AGENTS.md) — maintenance instructions.
 
 The core remains renderer-neutral. ChatGPT is the first concrete adapter; other adapters may be added later. Existing standards such as A2UI may inform future renderers, but are not required dependencies.
+
+## Feedback and continuity
+
+See [feedback.md](feedback.md) for optional improvement proposals, experimental agent self-assessment during AIP development, human calibration, and guidance refresh semantics. Proposals and self-ratings are not mandatory.
