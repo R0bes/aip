@@ -20,9 +20,6 @@ Read [AGENTS.md](../AGENTS.md) first. Use this card for work spanning multiple r
     <text color="secondary" size="xs">2 / 5 erledigt</text>
   </row>
   <text size="sm" color="secondary">GitHub-Ansichten und eine verlässliche Fortschrittsanzeige für mehrere Entwicklungsruns etablieren.</text>
-  <box background="surface-secondary" height="5px" radius="full" clip>
-    <row width="40%" background="rgba(134,106,203,0.8)" height="5px"/>
-  </box>
   <box gap={2}>
     <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP1 · Anforderungen</text><text size="xs" color="secondary">Kartenarten und Statusmodell festlegen · Erledigt</text></box></row>
     <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP2 · Vorlagen</text><text size="xs" color="secondary">DIL-Muster erstellen · Erledigt</text></box></row>
@@ -33,7 +30,7 @@ Read [AGENTS.md](../AGENTS.md) first. Use this card for work spanning multiple r
 </box>
 ```
 
-The five packages and statuses above are **demonstration data**, not claims about actual project progress. Replace with grounded current plan data; avoid arbitrary decorative progress. If `background` colors or a custom bar are unsupported by the current host, use `2 / 5` text alone instead of a broken visualization.
+The five packages and statuses above are **demonstration data**, not claims about actual project progress. Replace with grounded current plan data; avoid arbitrary decorative progress. For progress, the verified `done / total` counter is sufficient. Add a visual bar only when supported and grounded in the same counts.
 
 ## Example next-run handoff
 
