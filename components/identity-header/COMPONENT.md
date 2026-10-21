@@ -8,7 +8,7 @@ See [header.dil](header.dil) — reference variant 1; adapt data and theme to th
 
 This is the **Cyberpunk** preset example. Substitute verified repository/ref and chosen theme values. For native DIL, use supported style props; CSS from the HTML Next Run AppBlock does not cross into the header.
 
-The speech-bubble icon belongs to the existing shared Next Run input, not this header. Its appearance may use the selected theme's accent color if supported, but do **not** introduce a styled input container or alter the text field itself.
+The waveform/I-beam/lower-arrow icon belongs to the shared morphing Next Run input, not this header. Recolor the input through the selected theme without changing its focus, editing or collapse behavior.
 
 ## Compact header configuration (accepted interaction)
 
