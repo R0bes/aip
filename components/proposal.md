@@ -1,6 +1,6 @@
-# Agent improvement proposal · native UI template
+# Agent proposal · native UI template
 
-Only propose useful improvements prioritized by user benefit, effort and risk. This is a generation template, not importable JSX. Replace placeholders and build the complete proposal handoff before rendering.
+Offer only specific, practical improvements. This is JSX-like generation source, not an importable module. Replace placeholders and prepare a complete self-contained acceptance handoff using the rules in AGENTS.md.
 
 ```jsx
 <box border={{size:2,color:"default"}} radius="lg" padding={3} gap={2}>
@@ -16,4 +16,4 @@ Only propose useful improvements prioritized by user benefit, effort and risk. T
 </box>
 ```
 
-Only the unboxed 👍 accepts the proposal and authorizes its implementation in the next run. No automatic implementation, voting, ratings or persistence. `proposalHandoff` includes the specific proposal task, repo/ref, action ID/key, parameters, context, verbatim supplemental text if supplied, and the AIP footer specified in `chatgpt/quick.md`.
+Only the unboxed 👍 authorizes implementation in the next run; no automatic execution, voting or persistence.
