@@ -13,11 +13,11 @@ Read [AGENTS.md](../../AGENTS.md). This is the **only current Next Run template*
 
 ## DIL composition (generation reference)
 
-This snippet shows the important binding boundary. Replace `UNIQUE` consistently; provide concrete action definitions and actual HTML for the two AppBlocks. The SVG path is identical to `assets/next-run.svg`.
+The linked DIL source shows the important binding boundary. Replace `UNIQUE` consistently; provide concrete action definitions and actual HTML for the two AppBlocks. The SVG path is identical to `assets/next-run.svg`.
 
-See [composition.md](composition.md) for the complete DIL composition reference.
+See [composition.dil](composition.dil) for the complete DIL composition reference.
 
-Colors above are the Neutral illustration only. Bind the selected theme from the shared header state in the real response; never create a second independent theme state.
+The DIL source uses Neutral illustration colors only. Bind the selected theme from the shared header state in the real response; never create a second independent theme state.
 
 ## Shared morphing input — AppBlock HTML source
 
