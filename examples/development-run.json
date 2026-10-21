@@ -1,5 +1,5 @@
 {
-  "protocol_version": "0.2.0",
+  "protocol_version": "0.3.0",
   "context": "Continue iterative development in the current software repository; do not modify unrelated repositories.",
   "actions": [
     {
@@ -39,5 +39,13 @@
         }
       ]
     }
-  ]
+  ],
+  "meta": {
+    "version_label": "AIP 0.3.0",
+    "settings": {
+      "id": "settings",
+      "title": "Settings",
+      "instruction": "Show configurable interface preferences for this session; do not apply changes without explicit user choice."
+    }
+  }
 }
