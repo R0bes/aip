@@ -28,7 +28,7 @@ The identity header has a subtle classic gear icon (`settings`) at the far right
 
 ## Native UI component templates
 
-Each component directory has a **COMPONENT.md** entry point describing its contract, usage and variants. Components may additionally provide code examples or reusable HTML sources. These are generation references, not importable modules. Use their structure, substitute concrete values and supply working callbacks. Do not invent a separate rendering layer.
+Each component directory has a **COMPONENT.md** entry point describing its contract, usage and variants. Each component also has a `.dil` generation reference; Next Run additionally provides reusable HTML sources. Read `COMPONENT.md` for semantics and the referenced `.dil` for the rendering pattern. The `.dil` suffix is a repository convention, not an importable module or standalone compiler format. These are generation references, not importable modules. Use their structure, substitute concrete values and supply working callbacks. Do not invent a separate rendering layer.
 
 - [`components/identity-header/COMPONENT.md`](components/identity-header/COMPONENT.md) — minimal themed AIP / repository / ref orientation strip.
 - [`components/github-result/COMPONENT.md`](components/github-result/COMPONENT.md) — contextual GitHub cards: verified results, open PRs and branches.
@@ -38,4 +38,4 @@ Each component directory has a **COMPONENT.md** entry point describing its contr
 
 ## Maintenance
 
-Keep README descriptive, this file authoritative for behavior, `themes/themes.css` authoritative for token values, and component files focused on implementation. The single accepted Next Run component contract is `components/next-run/COMPONENT.md`, with `composition.md`, `cards.html` and `input.html` as its reference sources; no competing experiment file. Avoid repeating this contract in each component. No standalone HTML renderer, JSON protocol, generic adapters, settings, exports or telemetry.
+Keep README descriptive, this file authoritative for behavior, `themes/themes.css` authoritative for token values, and component files focused on implementation. The single accepted Next Run component contract is `components/next-run/COMPONENT.md`, with `composition.dil`, `cards.html` and `input.html` as its reference sources; no competing experiment file. Avoid repeating this contract in each component. No standalone HTML renderer, JSON protocol, generic adapters, settings, exports or telemetry.
