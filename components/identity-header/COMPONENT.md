@@ -4,18 +4,7 @@ Read [AGENTS.md](../../AGENTS.md) first. This is a small **orientation strip**, 
 
 Apply [theme tokens](../../themes/themes.css) to surface, border, foreground, muted text and radius. **No glow** (reserved for selected Next Run cards). A native DIL header is sufficient:
 
-```jsx
-<box background="#141824" border={{size:1,color:"#4D6075"}} radius="md" padding={{x:3,y:2}} theme="dark">
-  <row align="center" gap={2}>
-    <icon name="git-branch" color="#50E4DD" size="sm"/>
-    <text size="sm" weight="medium" color="#EEF5FF">AIP</text>
-    <text size="xs" color="#A7B7C9">·</text>
-    <text size="sm" color="#EEF5FF">R0bes/aip</text>
-    <text size="xs" color="#A7B7C9">·</text>
-    <text size="sm" color="#50E4DD">main</text>
-  </row>
-</box>
-```
+See [header.dil](header.dil) — reference variant 1; adapt data and theme to the current run.
 
 This is the **Cyberpunk** preset example. Substitute verified repository/ref and chosen theme values. For native DIL, use supported style props; CSS from the HTML Next Run AppBlock does not cross into the header.
 
