@@ -22,6 +22,7 @@ Use [`themes/README.md`](themes/README.md) as the shared semantic design-token r
 
 These files contain JSX-like **generation templates**, not importable modules. Use their structure, substitute concrete values and supply working callbacks. Do not invent a separate rendering layer.
 
+- [`components/identity-header.md`](components/identity-header.md) — minimal themed AIP / repository / ref orientation strip.
 - [`components/github-result.md`](components/github-result.md) — contextual GitHub cards: verified results, open PRs and branches.
 - [`components/plan-progress.md`](components/plan-progress.md) — multi-run plan/progress display and next-run handoff.
 - [`components/next-run.md`](components/next-run.md) — **accepted hybrid Next Run** visual and dispatch template.
