@@ -1,0 +1,49 @@
+# Next Run — DIL composition reference
+
+This is a **generation example**, not an importable or independently executable module. Follow [COMPONENT.md](COMPONENT.md), substitute verified repository/ref and concrete actions, and preserve the shared header theme state. Insert the complete HTML snippets from [cards.html](cards.html) and [input.html](input.html) in their respective AppBlocks.
+
+```jsx
+{@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{}}})}
+{@body const [instruction,setInstruction]=DIL.useState("")}
+{@body const [theme,setTheme]=DIL.useState("Neutral")}
+{@body const actions=[{id:"0",title:"Weiter",task:"Continue the agreed task.",context:"Preserve approved UI."}]}
+<box gap={2}>
+  <AppBlock app_block_id="aip-cards-UNIQUE" title="Next Run" variant="inline"
+    bind={{value:selection,setValue:setSelection,theme}}>
+    <!-- Use the compact accessible cards pattern below. -->
+  </AppBlock>
+  <row align="center" gap={2}>
+    <box flex="1">
+      <AppBlock app_block_id="aip-input-UNIQUE" title="Anweisung" variant="inline"
+        bind={{value:instruction,setValue:setInstruction,theme}}>
+        <!-- Use the complete morphing textarea below. -->
+      </AppBlock>
+    </box>
+    <pressable width="44px" height="44px" background="#F4F5F7"
+      border={{size:1,color:"#4B647D"}} radius="full" align="center"
+      justify="center" tooltip="Nächsten Run starten" onClick={()=>{
+        const prefix=instruction.match(/^\s*([0-9])\s*:/);
+        const key=prefix&&actions.some(a=>a.id===prefix[1])?prefix[1]:selection.selected;
+        const action=actions.find(a=>a.id===key);
+        if(!action)return;
+        const params={...(selection.params[key]||{}),theme};
+        GenUI.issueNewTurn(
+          "Repository: R0bes/aip\nBranch: main\nProposed task: "+action.task+
+          "\nAction: "+action.title+"\nKey: "+key+
+          "\nParameters: "+JSON.stringify(params)+
+          "\nProposal context: "+action.context+
+          "\n\nUser instruction (verbatim):\n"+instruction+
+          "\n\n[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]"+
+          "\nRead R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh."
+        );
+      }}>
+      <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none"
+        stroke="#4B647D" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19.4 8.5A8 8 0 1 0 20 12"/>
+        <path d="M19.4 3.9v4.6h-4.6"/>
+        <path d="m10 8.8 5 3.2-5 3.2z"/>
+      </svg>
+    </pressable>
+  </row>
+</box>
+```
