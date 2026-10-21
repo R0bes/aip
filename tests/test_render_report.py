@@ -22,16 +22,18 @@ class ReportRendererTests(unittest.TestCase):
         self.assertIn('placeholder="⧉"', html)
         self.assertIn('class="card action"', html)
         self.assertIn("aip:invoke", html)
+        self.assertNotIn(">Next Run<", html)
 
     def test_next_run_prompt_contract(self):
         output = render(self.report)
         self.assertIn("payload.prompt=promptParts.filter(Boolean).join", output)
+        self.assertIn("const profile=\'chatgpt/quick.md\'", output)
         self.assertIn("Task: ${action.instruction}", output)
         self.assertIn("Action: ${action.id} (key ${action.key})", output)
         self.assertIn("Supplemental text (verbatim):", output)
         self.assertIn("${supplemental_text}", output)
         self.assertIn("[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]", output)
-        self.assertIn("Read the AIP ChatGPT profile from the repository at the start of this run when access is available", output)
+        self.assertIn("Read chatgpt/quick.md from R0bes/aip at the start of this run if accessible", output)
         self.assertNotIn("fetch(", output)
         self.assertNotIn("window.location.reload", output)
 
