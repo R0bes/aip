@@ -12,7 +12,7 @@ AIP also defines optional run-output elements: context header, change summary, l
 
 ## Run completion
 
-Report completed work, verification actually performed, blockers, and remaining work. If useful next actions exist, place the selector last; no prose follows it. Do not force any fixed number of options; omit the selector when no meaningful next action exists.
+Report completed work, verification actually performed, blockers, and remaining work. If useful next actions exist, place the selector last; **nothing** follows it. Result artifacts may be interleaved with prose before the selector. Do not force any fixed number of options; omit the selector when no meaningful next action exists.
 
 ## Actions
 
