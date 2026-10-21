@@ -15,20 +15,28 @@ def validate_semantics(data: dict) -> None:
     actions = data["actions"]
     ids = [a["id"] for a in actions]
     keys = [a["key"] for a in actions]
-    assert len(ids) == len(set(ids)), "duplicate action id"
-    assert len(keys) == len(set(keys)), "duplicate action key"
-    assert sum(a.get("recommended", False) for a in actions) <= 1, "multiple recommendations"
+    if not (len(ids) == len(set(ids))):
+        raise ValueError("duplicate action id")
+    if not (len(keys) == len(set(keys))):
+        raise ValueError("duplicate action key")
+    if not (sum(a.get("recommended", False) for a in actions) <= 1):
+        raise ValueError("multiple recommendations")
     for action in actions:
-        assert (action["key"] == "0") == (action["id"] == "continue"), "key 0 reserved for continue"
+        if not ((action["key"] == "0") == (action["id"] == "continue")):
+            raise ValueError("key 0 reserved for continue")
         params = action.get("parameters", [])
         names = [p["id"] for p in params]
-        assert len(names) == len(set(names)), "duplicate parameter id"
+        if not (len(names) == len(set(names))):
+            raise ValueError("duplicate parameter id")
         for p in params:
             if p["type"] == "integer":
-                assert p["min"] <= p["default"] <= p["max"], "integer default out of bounds"
+                if not (p["min"] <= p["default"] <= p["max"]):
+                    raise ValueError("integer default out of bounds")
             if p["type"] == "enum":
-                assert p["default"] in p["choices"], "enum default not among choices"
-                assert len(p["choices"]) == len(set(p["choices"])), "duplicate enum choice"
+                if not (p["default"] in p["choices"]):
+                    raise ValueError("enum default not among choices")
+                if not (len(p["choices"]) == len(set(p["choices"]))):
+                    raise ValueError("duplicate enum choice")
 
 
 def main() -> None:
