@@ -1,10 +1,9 @@
-# AIP repository instructions
+# AIP maintenance
 
-AIP currently serves only iterative ChatGPT work on the user's own GitHub repositories.
+Scope: iterative ChatGPT work on user-owned GitHub repositories only.
 
-- Read and apply `chatgpt/quick.md` at the start of each AIP run if accessible.
-- Maintain three user-facing elements only: verified GitHub change cards, next-run action cards and agent improvement proposals.
-- Keep every next-run request self-contained and carry forward the read/apply/propagate AIP instruction.
-- Favor concise, operational rules and native ChatGPT UI. No generic agent infrastructure, standalone renderers, settings, exports or ratings as active features.
-- Obsolete experimental files were removed; do not reintroduce them without a concrete need.
-- Verify actual changes and relevant checks; never claim an unperformed test.
+- `chatgpt/quick.md` is the **only authoritative run contract**. Avoid duplicating its rules.
+- Maintain the three concrete native UI templates in `components/`. Treat them as adaptable source examples, not an executable library.
+- Preserve explicit 🚀 Execute dispatch, independent supplemental text and 👍 proposal authorization.
+- Verify changes and checks; do not invent results.
+- Avoid standalone renderers, schemas, settings, ratings, exports and generic infrastructure.
