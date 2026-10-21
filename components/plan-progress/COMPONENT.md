@@ -1,17 +1,17 @@
 # Plan / Progress card — multi-run work
 
-Read [AGENTS.md](../../AGENTS.md) first. Use this card for work spanning multiple runs, not for a trivial one-step task. This is a **presentation and handoff template**, not a plan database, workflow engine or scheduler.
+Read [AGENTS.md](../../AGENTS.md) first. Use this card for work spanning multiple runs, not for a trivial one-step task. This is a **view of the agent's existing planning state**, not a plan database, workflow engine, scheduler or second source of truth. Prefer an available agent plan tool; otherwise use a grounded project plan or current task context. Do not create an AIP-specific plan store.
 
 ## Semantics
 
 - Show the **goal**, a short explanation of the plan, and numbered actionable work packages with concrete deliverables. Optionally group packages into phases.
 - Status vocabulary: **open** (circle, neutral), **active** (play/circle-dot, accent), **done** (check, success), **blocked** (alert, warning). Use **both symbol and text**, not color alone. Distinguish confirmed work from unverified claims; completed means evidenced, not just previously requested.
 - Progress is `done / total` for the explicitly enumerated packages; active and blocked do **not** count as done. Do not guess a percentage when the scope is unknown. State if the plan is provisional or changed.
-- The plan is **not automatically persisted across chats**. For continuity, cite the existing issue/document/branch when one exists, or include a compact self-contained plan snapshot in the next-run handoff. If no durable source exists, never claim one.
+- AIP does **not** persist plans across chats or runs. The source remains the agent's plan tool, a project document or other existing context. Display only grounded information; if a source cannot be accessed, say so rather than reconstructing or inventing it.
 - **Default interaction pattern: Plan is the status overview; adjacent Next Run cards are the action surface.** The agent should normally propose grounded plan-aware Next Run options: continue the next eligible package, implement a specified package or safe batch (e.g. AP3 + AP4), review/retry an unverified or failed package, resolve a blocker, or revise the plan. Only offer meaningful alternatives; don't manufacture them.
 - Plan rows are informational by default, **not a second set of Next Run cards**. An optional plan-row selection may preselect a corresponding Next Run action, but must not dispatch, alter package status, or create a second rocket. Keep one shared input and one native rocket as specified in `../next-run/COMPONENT.md`.
 - Every plan-aware action must identify exact package IDs and expected deliverables; a batch must mention dependencies and only group independently executable/ordered packages. **The next eligible step** means prerequisites are met, not simply the next numerical ID. A retry/review action must not silently reset verified status.
-- The next-run handoff must include the plan goal, plan/source identifier if known, the numbered package definitions and statuses, selected package IDs, relevant dependencies/blockers, and the expected completion/verification criteria. If the snapshot is too large, use a verified durable plan source plus the necessary focused context; do not rely on an unexplained reference to a previous chat. A plan is not authorization for unsupervised background execution.
+- Next Run carries the selected intent, not the entire plan. For a plan-aware action, identify only the necessary package IDs, gate IDs or source references and expected deliverable. The receiving agent consults its available planning context/tool; if missing, it must ask for or retrieve the required context rather than pretending it was handed over. A plan is not authorization for unsupervised background execution.
 - Do not mark a package done merely because a new run was requested. Update statuses only after work and verification. If steps are parallelizable, mention it but don't pretend they have started.
 
 ## Presentation modes and future dependencies
@@ -31,7 +31,7 @@ Read [AGENTS.md](../../AGENTS.md) first. Use this card for work spanning multipl
 - `AP4` Integration — blocked by `G1`; only proceed when the gate is passed.
 - `G2` Human review — pending; reviewer must inspect the UI and explicitly approve before dependent release work.
 
-A corresponding Next Run card may say **“Bis G1 entwickeln”**. Its handoff must contain selected package IDs, gate ID/type, exact stop point, acceptance criteria and current statuses. After reaching G1, the agent stops, reports completed work and the required local test, and offers Next Run choices to verify/retry or continue **only after evidence**.
+A corresponding Next Run card may say **“Bis G1 entwickeln”**. Its handoff identifies the relevant package/gate and stop condition, without serializing the full plan. After reaching G1, the agent stops, reports completed work and the required local test, and offers Next Run choices to verify/retry or continue **only after evidence**.
 
 ## Compact native DIL example
 
@@ -41,4 +41,4 @@ The five packages and statuses above are **demonstration data**, not claims abou
 
 ## Example next-run handoff
 
-Use the established Next Run component in [Next Run](../next-run/COMPONENT.md), e.g. choices `0 = Nächstes freigegebenes AP`, `1 = AP3 und AP4 nacheinander`, `2 = AP5 überprüfen und bei Bedarf wiederholen`. Show those cards alongside the plan, not as extra dispatch buttons in each plan row. The native rocket dispatches the selected action with a plan snapshot (or grounded plan source + focused context) in **Proposal context**, exact package IDs and acceptance criteria in **Proposed task**, and the shared input verbatim. If a plan row can be selected, it may update the corresponding Next Run selection via shared DIL state; no separate send action.
+Use the established Next Run component in [Next Run](../next-run/COMPONENT.md), e.g. choices `0 = Nächstes freigegebenes AP`, `1 = AP3 und AP4 nacheinander`, `2 = AP5 überprüfen und bei Bedarf wiederholen`. Show those cards alongside the plan, not as extra dispatch buttons in each plan row. The native rocket dispatches the selected action using [the minimal prompt template](../../prompts/next-run.md), with only essential package/gate references and the shared input verbatim. If a plan row can be selected, it may update the corresponding Next Run selection via shared DIL state; no separate send action.
