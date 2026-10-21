@@ -33,7 +33,7 @@ class ReportRendererTests(unittest.TestCase):
         self.assertIn("Supplemental text (verbatim):", output)
         self.assertIn("${supplemental_text}", output)
         self.assertIn("[aip: ${report.protocol_version}; repo: R0bes/aip; profile: ${profile}]", output)
-        self.assertIn("Read chatgpt/quick.md from R0bes/aip at the start of this run if accessible", output)
+        self.assertIn("Read R0bes/aip/chatgpt/quick.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt", output)
         self.assertNotIn("fetch(", output)
         self.assertNotIn("window.location.reload", output)
 
