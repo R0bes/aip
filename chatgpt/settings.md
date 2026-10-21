@@ -1,6 +1,6 @@
 # ChatGPT settings interaction (draft)
 
-A visually secondary ⚙ settings control may appear next to the AIP action selector and version label. It is a **meta action**, not a numbered workflow step.
+A visually secondary ⚙ settings control may appear in a right-aligned, bottom-aligned vertical utility rail with an icon-only Paste control and a small version label. Neither utility icon needs a border or text label; accessible labels/tooltips remain required. It is a **meta action**, not a numbered workflow step.
 
 When activated, start a new user-visible settings interaction. Show only settings that are meaningful and actually controllable in the current ChatGPT client.
 
@@ -17,6 +17,6 @@ Preferences are session-scoped unless the host provides explicit persistence. Do
 
 ## Example footer
 
-`[0 Continue] [1 Verify]   [⚙ Settings]  AIP 0.3.0`
+`[run card 0] [run card 1]  |  📋 / ⚙ / AIP 0.3.0`
 
 On a text-only client, show `settings` as a separate textual meta action.
