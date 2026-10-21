@@ -1,0 +1,45 @@
+<div id="aip-cards-UNIQUE">
+<style>
+#aip-cards-UNIQUE .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;align-items:stretch}
+#aip-cards-UNIQUE .card{position:relative;box-sizing:border-box;min-width:0;padding:13px;border:1px solid var(--aip-border);border-radius:10px;background:var(--aip-surface);color:var(--aip-text);cursor:pointer;font-family:system-ui}
+#aip-cards-UNIQUE .card[aria-pressed=true]{border:2px solid var(--aip-accent);padding:12px;box-shadow:0 0 10px var(--aip-glow)}
+#aip-cards-UNIQUE .head{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:650}
+#aip-cards-UNIQUE .head svg{width:20px;height:20px;flex-shrink:0;color:var(--aip-accent)}
+#aip-cards-UNIQUE .key{position:absolute;right:10px;top:9px;font-size:10px;color:var(--aip-muted)}
+#aip-cards-UNIQUE .desc{font-size:11px;line-height:1.5;color:var(--aip-muted);margin-top:7px}
+@media(max-width:390px){#aip-cards-UNIQUE .cards{grid-template-columns:1fr}}
+</style>
+<div class="cards">
+  <div class="card" role="button" tabindex="0" data-key="0" aria-pressed="true">
+    <span class="key">0</span><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>Weiter</div>
+    <div class="desc">Nächsten vereinbarten Schritt ausführen.</div>
+  </div>
+  <div class="card" role="button" tabindex="0" data-key="1" aria-pressed="false">
+    <span class="key">1</span><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>Prüfen</div>
+    <div class="desc">Aktuellen Stand und Risiken prüfen.</div>
+  </div>
+</div>
+<script>
+(()=>{
+const root=document.getElementById("aip-cards-UNIQUE");
+const palettes={
+  Pastel:["#EEE5FA","#35374D","#626B81","#B8ACCE","#866ACB","#8E78C650"],
+  Cyberpunk:["#141824","#EEF5FF","#A7B7C9","#4D6075","#50E4DD","#50E4DD50"],
+  Neutral:["#F4F5F7","#232833","#626B76","#C5CAD2","#4B647D","#4B647D20"]
+};
+let state={selected:"0",params:{"0":{},"1":{}}};
+function render(){
+ const p=palettes[globalThis.__bindings?.theme]||palettes.Pastel;
+ ["--aip-surface","--aip-text","--aip-muted","--aip-border","--aip-accent","--aip-glow"].forEach((name,i)=>root.style.setProperty(name,p[i]));
+ root.querySelectorAll(".card").forEach(c=>c.setAttribute("aria-pressed",String(c.dataset.key===state.selected)));
+}
+function select(key){state={...state,selected:key};render();globalThis.__bindings?.setValue?.(state)}
+root.querySelectorAll(".card").forEach(c=>{
+ c.addEventListener("click",()=>select(c.dataset.key));
+ c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(c.dataset.key)}});
+});
+globalThis.__effect?.(()=>{const v=globalThis.__bindings?.value;if(v&&typeof v==="object"&&v.params)state=v;render()});
+render();
+})();
+</script>
+</div>
