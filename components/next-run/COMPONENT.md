@@ -15,7 +15,7 @@ Read [AGENTS.md](../../AGENTS.md). This is the **only current Next Run template*
 
 The linked DIL source shows the important binding boundary. Replace `UNIQUE` consistently; provide concrete action definitions and actual HTML for the two AppBlocks. The SVG path is identical to `assets/next-run.svg`.
 
-See [composition.dil](composition.dil) for the complete DIL composition reference.
+See [composition.dil](composition.dil) for the DIL binding and dispatch skeleton. It is not a complete standalone response: insert the HTML from `cards.html` and `input.html`, and compose the identity header separately.
 
 The DIL source uses Neutral illustration colors only. Bind the selected theme from the shared header state in the real response; never create a second independent theme state.
 
