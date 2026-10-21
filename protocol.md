@@ -12,7 +12,7 @@ AIP also defines optional run-output elements: context header, change summary, l
 
 ## Run completion
 
-Report completed work, verification actually performed, blockers, and remaining work. If useful next actions exist, place the selector last; no prose follows it.
+Report completed work, verification actually performed, blockers, and remaining work. If useful next actions exist, place the selector last; no prose follows it. Do not force any fixed number of options; omit the selector when no meaningful next action exists.
 
 ## Actions
 
@@ -27,7 +27,7 @@ Report completed work, verification actually performed, blockers, and remaining 
 
 ## Invocation
 
-Only a genuine user gesture invokes an action. Capture the selected action and its current parameters, then dispatch a **new, self-contained user request** with protocol version, stable action ID, display key, complete instruction, explicit parameter values, verbatim extra user text, and enough project/run context to resume independently. Never rely on hidden widget state. The host's safety, permissions, and confirmation requirements still apply.
+Only a genuine user gesture invokes an action. Capture the selected action and its current parameters, then dispatch a **new, self-contained user request** with stable action ID, display key, complete instruction, explicit parameter values, verbatim extra user text, and enough project/run context to resume independently. Keep the actual project task first; place compact AIP protocol/profile/version metadata at the end as machine-readable or otherwise unobtrusive context. Never rely on hidden widget state. The host's safety, permissions, and confirmation requirements still apply.
 
 ## Optional supplemental text
 
@@ -35,7 +35,7 @@ A selector MAY carry user-supplied supplemental text per action. An adapter may 
 
 ## Version reference and settings
 
-An optional compact, unobtrusive version reference can identify the exact protocol release or revision used (e.g. `AIP 0.3.0 · abc1234`). It is informational, not evidence that the agent fetched the latest release. An optional settings entry may request a separate settings interaction; changing preferences does not itself perform repository updates or grant access. Live synchronization, persistence and automatic updates are out of scope for this draft.
+An optional single compact version reference in the context header can identify the exact protocol release or revision used (e.g. `AIP 0.3.0 · abc1234`). It is informational, not evidence that the agent fetched the latest release. An optional settings entry may request a separate settings interaction; changing preferences does not itself perform repository updates or grant access. Live synchronization, persistence and automatic updates are out of scope for this draft.
 
 ## Text fallback
 
