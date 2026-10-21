@@ -43,6 +43,33 @@ def main() -> None:
     validate_semantics(empty)
     print("PASS: zero-action selector")
 
+    report_schema = json.loads((ROOT / "report.schema.json").read_text())
+    report_example = json.loads((ROOT / "examples/report.json").read_text())
+    Draft202012Validator.check_schema(report_schema)
+    from referencing import Registry, Resource
+    registry = Registry().with_resource(schema["$id"], Resource.from_contents(schema))
+    report_validator = Draft202012Validator(report_schema, registry=registry)
+    report_validator.validate(report_example)
+    validate_semantics(report_example["next_run"])
+    print("PASS: report schema and example")
+
+    def reject_report(name, change):
+        candidate = json.loads(json.dumps(report_example))
+        change(candidate)
+        try:
+            report_validator.validate(candidate)
+            if "next_run" in candidate:
+                validate_semantics(candidate["next_run"])
+        except (AssertionError, ValueError, ValidationError):
+            print("PASS:", name)
+        else:
+            raise AssertionError("accepted invalid report: " + name)
+
+    reject_report("unknown report block", lambda x: x["blocks"].append({"type":"mystery"}))
+    reject_report("empty command", lambda x: x["blocks"][2].update(content=""))
+    reject_report("missing GitHub operation", lambda x: x["blocks"][1].pop("operation"))
+    reject_report("invalid action in report", lambda x: x["next_run"]["actions"][0].update(key="1"))
+
     def must_reject(name, change):
         candidate = json.loads(json.dumps(example))
         change(candidate)
