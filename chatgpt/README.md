@@ -8,7 +8,7 @@ Start with one outlined context header, including known repository/ref, one vers
 
 Render GitHub interactions and generic copyable commands/prompts when relevant. Offer a dedicated faithful report export when useful. Copy controls never execute. Do not invent hidden details, unsupported attachments, or clipboard access.
 
-Put compact next-run cards at the **very end**, with no 'Next Run' heading; nothing follows. The whole main card surface dispatches on an explicit click. Inputs must be isolated from dispatch. Do not force a fixed number of choices or generic scope switches. Distinguish next-action cards from optional agent improvement proposal cards; only proposal cards have functional 👍/👎 feedback, which must not implicitly implement changes.
+Put compact next-run cards at the **very end**, with no 'Next Run' heading; nothing follows. The whole main card surface dispatches on an explicit click. Inputs must be isolated from dispatch. Do not force a fixed number of choices or generic scope switches. Distinguish next-action cards from optional agent improvement proposal cards; proposal cards have one unboxed 👍 at top right that explicitly dispatches an implementation request for the specific proposal. No 👎, no voting state or persistence; no automatic implementation before the click. Proposal cards use their idea as the title, no generic label or lightbulb, and show brief benefit/optional trade-off.
 
 ## Supplemental text
 
