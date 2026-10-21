@@ -1,6 +1,6 @@
-# Next-run card · native UI template
+# Next Run · native UI template
 
-Generate this structure in a ChatGPT response. This is illustrative DIL-like source, not an importable component. The state declaration belongs at the top level of the response, outside the card. Each card needs its own state variable. Replace all placeholders and implement `handoff` as a self-contained string before rendering.
+Generate this structure in a ChatGPT response. It is illustrative JSX-like source, not an importable module. Declare state at the response's top level, use a distinct state variable per card, and replace placeholders with concrete content. Implement `handoff` as a complete message string.
 
 ```jsx
 {@body const [extra, setExtra] = DIL.useState("")}
@@ -23,4 +23,4 @@ Generate this structure in a ChatGPT response. This is illustrative DIL-like sou
 </box>
 ```
 
-The card body never dispatches. Only 🚀 Execute does. `handoff(extra)` must include repository/ref, task, action ID/key, explicit parameters, context, supplemental text verbatim, then AIP metadata and the read/apply/propagate instruction from `chatgpt/quick.md`. Key `0` is continuation. Cards appear last without a heading or trailing text.
+Only 🚀 Execute dispatches. `handoff(extra)` preserves the textarea value verbatim and follows the self-contained request format and AGENTS.md propagation rule. Key `0` is continuation.
