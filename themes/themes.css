@@ -1,0 +1,40 @@
+/* AIP theme tokens — canonical presentation values.
+   Select one [data-aip-theme] on the HTML/AppBlock root.
+   Native DIL controls must receive the corresponding values explicitly. */
+:root,
+[data-aip-theme="Pastel"] {
+  --aip-surface: #EEE5FA;
+  --aip-surface-alt: #DFE9F6;
+  --aip-text: #35374D;
+  --aip-muted: #626B81;
+  --aip-border: #B8ACCE;
+  --aip-accent: #866ACB;
+  --aip-accent-soft: #A58DE639;
+  --aip-glow: #8E78C650;
+  --aip-radius: 14px;
+  --aip-density: compact;
+}
+[data-aip-theme="Cyberpunk"] {
+  --aip-surface: #141824;
+  --aip-surface-alt: #202838;
+  --aip-text: #EEF5FF;
+  --aip-muted: #A7B7C9;
+  --aip-border: #4D6075;
+  --aip-accent: #50E4DD;
+  --aip-accent-soft: #50E4DD24;
+  --aip-glow: #50E4DD50;
+  --aip-radius: 8px;
+  --aip-density: compact;
+}
+[data-aip-theme="Neutral"] {
+  --aip-surface: #F4F5F7;
+  --aip-surface-alt: #E8EBEF;
+  --aip-text: #232833;
+  --aip-muted: #626B76;
+  --aip-border: #C5CAD2;
+  --aip-accent: #4B647D;
+  --aip-accent-soft: #4B647D20;
+  --aip-glow: #4B647D20;
+  --aip-radius: 10px;
+  --aip-density: compact;
+}
