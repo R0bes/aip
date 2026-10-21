@@ -19,28 +19,4 @@ Apply [theme tokens](../themes/README.md) to surface, border, foreground, muted 
 
 This is the **Cyberpunk** preset example. Substitute verified repository/ref and chosen theme values. For native DIL, use supported style props; CSS from the HTML Next Run AppBlock does not cross into the header.
 
-## Shared speech-bubble input
-
-The `💬` field is the **shared Next Run instruction input**, not the host's main chat composer. Keep it one transparent, borderless HTML textarea with the `💬` placeholder and native rocket to the right. Theme its placeholder, caret and text using scoped tokens in its **own** AppBlock:
-
-```css
-#aip-input-UNIQUE {
-  --aip-text: #EEF5FF;
-  --aip-muted: #A7B7C9;
-  --aip-accent: #50E4DD;
-}
-#aip-input-UNIQUE textarea {
-  color: var(--aip-text);
-  caret-color: var(--aip-accent);
-  background: transparent;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-}
-#aip-input-UNIQUE textarea::placeholder {
-  color: var(--aip-muted);
-  opacity: 1;
-}
-```
-
-This CSS is a **scoped example**, not a global stylesheet. The surrounding host surface may need a theme-compatible container for contrast; never promise to recolor the native rocket or ChatGPT's actual composer.
+The speech-bubble icon belongs to the existing shared Next Run input, not this header. Its appearance may use the selected theme's accent color if supported, but do **not** introduce a styled input container or alter the text field itself.
