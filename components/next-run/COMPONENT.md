@@ -9,7 +9,7 @@ Read [AGENTS.md](../../AGENTS.md). This is the **only current Next Run template*
 - To its right, keep **one native DIL `<pressable>`**, 44px circle, with the custom circular-arrow/play SVG in [assets/next-run.svg](../../assets/next-run.svg). Only this native control calls `GenUI.issueNewTurn`; AppBlock HTML cannot dispatch a ChatGPT turn.
 - DIL owns shared selection, text, action parameters and theme state. Bind AppBlocks through `bind={{value,setValue}}`; `globalThis.__bindings?.…` and `globalThis.__effect?.(…)` must always be optional-chained.
 - Include the theme chosen in the header gear panel in the next-run parameters, e.g. `{theme:"Neutral"}`. Theme changes recolor all theme-aware components immediately, using [themes/themes.css](../../themes/themes.css); no persistent settings.
-- Dispatch a self-contained request: repository/ref, proposed task, action/key, parameters, proposal context, exact `User instruction (verbatim)` textarea content, AIP footer and the required AGENTS.md refresh instruction. A leading valid `N:` selects that action **without altering the original textarea text**. Never claim HTML-only Enter sends or that file attachments can be forwarded.
+- Dispatch the minimal action handoff from [prompts/next-run.md](../../prompts/next-run.md): repository/ref, concise task, action/key, parameters, exact `User instruction (verbatim)` textarea content, AIP footer and AGENTS.md read instruction. Do not serialize plan state, GitHub snapshots or redundant proposal context. A leading valid `N:` selects that action **without altering the original textarea text**. Never claim HTML-only Enter sends or that file attachments can be forwarded.
 
 ## DIL composition (generation reference)
 
