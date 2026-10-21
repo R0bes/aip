@@ -20,3 +20,7 @@ Apply [theme tokens](../themes/README.md) to surface, border, foreground, muted 
 This is the **Cyberpunk** preset example. Substitute verified repository/ref and chosen theme values. For native DIL, use supported style props; CSS from the HTML Next Run AppBlock does not cross into the header.
 
 The speech-bubble icon belongs to the existing shared Next Run input, not this header. Its appearance may use the selected theme's accent color if supported, but do **not** introduce a styled input container or alter the text field itself.
+
+## Optional compact configuration disclosure (proposed)
+
+Keep the approved Cyberpunk header and Next Run styling unchanged. A subtle settings icon at the far right may expand a small panel directly below the header, collapsed by default. Initially offer a theme switcher (Cyberpunk, Pastel, Neutral). Apply the selected semantic tokens consistently to header, GitHub result, suggestions, input and Next Run trigger within the current response. This is ephemeral local UI state, not a persistent account preference or cross-message setting. Prefer a native DIL disclosure control or simple local AppBlock interaction; do not add a renderer, service or storage. Preserve the orientation-only identity line; settings are a separate optional control. Validate appearance and theme synchronization before making it the default.
