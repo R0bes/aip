@@ -19,7 +19,7 @@ AIP's primary use case is collaborative software development with ChatGPT on Git
 - [chatgpt/settings.md](chatgpt/settings.md) — settings interaction (draft; no persistence/sync yet).
 - [AGENTS.md](AGENTS.md) — maintenance instructions.
 
-The current product focus is ChatGPT conversations working on arbitrary GitHub repositories. Keep reusable rules in `chatgpt/software-development.md` and link to them in follow-up prompts. Do not expand toward generic agent infrastructure unless a concrete user need warrants it.
+The current product focus is ChatGPT conversations working on arbitrary GitHub repositories. Keep reusable rules in the concise `chatgpt/software-development.md` and instruct every next run to re-read that profile when GitHub access is available. Do not expand toward generic agent infrastructure unless a concrete user need warrants it.
 
 ## Feedback and continuity
 
