@@ -7,3 +7,7 @@ Render local commands in a code block or compact command panel with an icon-only
 All copy actions copy only; never execute commands or submit agent prompts. Be accurate about the current working directory and environment. Omit elements without grounded data.
 
 Run proposal cards remain the final section of the answer. Prefer horizontal arrangements, clean coordinated visual language and variable card widths. Each card may have a tiny **always-mounted text input** so mouse-driven paste targets the field on the first click; keep a visible focus state and accessible label. The host may still route special mouse events elsewhere: test with the actual input controller rather than promise universal behavior.
+
+## Layout and scope
+
+Use one top header for repository/ref, optional run reference, AIP version and icon-only Settings. Do not duplicate the version in a bottom rail. GitHub change cards may expand/collapse details as warranted, and may be repeated for different repositories/branches or combined into an explicit comparison card. Distinguish edited, committed, pushed and deployed states. Next-run options are optional and have no fixed count.
