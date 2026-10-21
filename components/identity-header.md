@@ -2,7 +2,7 @@
 
 Read [AGENTS.md](../AGENTS.md) first. This is a small **orientation strip**, not a status report. Display only `AIP · repository · branch/ref`. The AIP version is kept in the Next Run handoff metadata; it need not occupy visible header space. Never invent a repository/ref. Do not include commit, verification, progress, status badge or explanatory prose in the identity strip. Put those facts in GitHub Result or Plan cards.
 
-Apply [theme tokens](../themes/README.md) to surface, border, foreground, muted text and radius. **No glow** (reserved for selected Next Run cards). A native DIL header is sufficient:
+Apply [theme tokens](../themes/tokens.csv) to surface, border, foreground, muted text and radius. **No glow** (reserved for selected Next Run cards). A native DIL header is sufficient:
 
 ```jsx
 <box background="#141824" border={{size:1,color:"#4D6075"}} radius="md" padding={{x:3,y:2}} theme="dark">
@@ -23,11 +23,11 @@ The speech-bubble icon belongs to the existing shared Next Run input, not this h
 
 ## Compact header configuration (accepted interaction)
 
-Place a subtle classic gear icon (`<icon name="settings"/>`) at the far right of the identity header. Clicking expands a compact panel directly below the identity row; collapsed by default. Keep the approved Cyberpunk styling as the initial presentation.
+Place a subtle classic gear icon (`<icon name="settings"/>`) at the far right of the identity header. Clicking expands a compact panel directly below the identity row; collapsed by default. Use the theme passed to this run, falling back to Pastel when none is specified; never reset an explicitly selected theme.
 
 Offer theme selection (Cyberpunk, Pastel, Neutral), applied immediately to all theme-aware components in the current response through shared DIL state. The chosen theme is also included as a self-contained parameter in the next-run handoff.
 
-Do **not** offer a "Save as AIP default" repository-setting action. The panel must not include agent-personal-rule controls or instructions; users manage their own agent preferences outside AIP. No settings service, AIP persistence, local storage, new renderer or cross-chat persistence. Use existing semantic tokens in `themes/README.md`; keep theme choice separate from task selection and preserve native Next Run dispatch.
+Do **not** offer a "Save as AIP default" repository-setting action. The panel must not include agent-personal-rule controls or instructions; users manage their own agent preferences outside AIP. No settings service, AIP persistence, local storage, new renderer or cross-chat persistence. Use existing semantic tokens in `themes/tokens.csv`; keep theme choice separate from task selection and preserve native Next Run dispatch.
 
 ## Integration invariant
 
