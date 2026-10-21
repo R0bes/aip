@@ -1,6 +1,6 @@
 # ChatGPT adapter — AIP 0.3.0 draft
 
-ChatGPT collaboration on GitHub repositories is AIP's primary target experience, including across separate conversations. The goal is readable verified results and practical next-run suggestions, not an agent runtime or background synchronization system. See [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md). Repository instructions are not automatically loaded or synchronized. When AIP is invoked, read the compact `software-development.md` profile at the start of every run if GitHub access is available.
+ChatGPT collaboration on GitHub repositories is AIP's primary target experience, including across separate conversations. The goal is readable verified results and practical next-run suggestions, not an agent runtime or background synchronization system. See [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md). Repository instructions are not automatically loaded or synchronized. When AIP is invoked, read the compact `quick.md` profile at the start of every run if GitHub access is available.
 
 ## Rendering
 
@@ -8,7 +8,7 @@ Start with one outlined context header, including known repository/ref, one vers
 
 Render GitHub interactions and generic copyable commands/prompts when relevant. Offer a dedicated faithful report export when useful. Copy controls never execute. Do not invent hidden details, unsupported attachments, or clipboard access.
 
-Put compact next-run cards at the **very end**; nothing follows. The whole main card surface dispatches on an explicit click. Inputs must be isolated from dispatch. Do not force a fixed number of choices or generic scope switches.
+Put compact next-run cards at the **very end**, with no 'Next Run' heading; nothing follows. The whole main card surface dispatches on an explicit click. Inputs must be isolated from dispatch. Do not force a fixed number of choices or generic scope switches.
 
 ## Supplemental text
 
