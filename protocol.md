@@ -27,7 +27,7 @@ Report completed work, verification actually performed, blockers, and remaining 
 
 ## Invocation
 
-Only a genuine user gesture invokes an action. Capture the selected action and its current parameters, then dispatch a **new, self-contained user request** with stable action ID, display key, complete instruction, explicit parameter values, verbatim extra user text, and enough project/run context to resume independently. Keep the actual project task first; place compact AIP protocol/profile/version metadata at the end as machine-readable or otherwise unobtrusive context. Never rely on hidden widget state. The host's safety, permissions, and confirmation requirements still apply.
+Only a genuine user gesture invokes an action. Capture the selected action and its current parameters, then dispatch a **new, self-contained user request** with stable action ID, display key, complete instruction, explicit parameter values, verbatim extra user text, and enough project/run context to resume independently. Keep the actual project task first; place compact AIP protocol/profile/version metadata at the end as machine-readable or otherwise unobtrusive context. Require the next run to read and apply its AIP profile and propagate that requirement in subsequent handoffs. Never rely on hidden widget state. The host's safety, permissions, and confirmation requirements still apply.
 
 ## Optional supplemental text
 
