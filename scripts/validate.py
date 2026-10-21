@@ -37,6 +37,11 @@ def main() -> None:
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
     validate_semantics(example)
+    empty = json.loads(json.dumps(example))
+    empty["actions"] = []
+    Draft202012Validator(schema).validate(empty)
+    validate_semantics(empty)
+    print("PASS: zero-action selector")
 
     def must_reject(name, change):
         candidate = json.loads(json.dumps(example))
