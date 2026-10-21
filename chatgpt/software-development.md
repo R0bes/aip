@@ -14,7 +14,7 @@ When the AIP profile is referenced and GitHub access is available, **read `quick
 - Cards: compact responsive layout; consistent leading icon and specific title on one line, small shortcut key. Main surface invokes the next run on explicit click.
 - Exactly one supplemental text field per action card: focusable, transparent, borderless, no outline or shadow; compact type; placeholder `⧉` inside the field. Show all entered text, grow for multiline, and forward it **verbatim**. Clicking/editing this field must never invoke the card. No extra +, preview, helper caption, edit toggle or confirmation button.
 - Prefer white/native backgrounds, subtle 2px outlines and restrained cyan/violet/amber neon accents (~15–20% visual detail), not heavy dark/glowing cards. Respect host UI limitations.
-- No per-card thumbs ratings. Only functional controls; offer a numbered text fallback if interactive cards cannot work.
+- No thumbs on action/result cards. **Agent proposal cards** may present a concrete improvement idea with brief benefit/trade-off and functional thumbs-up/thumbs-down controls. Thumbs submit explicit feedback in conversation, not a repository edit or silent persistence. Keep proposal cards distinct from next-action cards; offer only useful ideas. Only functional controls; offer a text fallback if unavailable.
 
 ## Next-run handoff
 
