@@ -22,4 +22,4 @@ When working on an iterative software project, the agent may check the public AI
 
 ## UI preferences
 
-Compact controls, minimal labels, action-specific configuration only when relevant, no oversized cards, selector last, with an unobtrusive version reference, optional paste control, and optional settings control.
+Use compact, information-rich **run proposal cards** rather than a plain button row. A simple card is itself clickable. A card with editable parameters has a separate explicit Go control so adjusting controls cannot accidentally dispatch the run. Cards may use restrained color/accent and short descriptions. Put an unoutlined, icon-only Paste and Settings pair in a vertically stacked utility rail on the right, bottom-aligned with a small version label beneath. Keep action-local controls inside their card. Do not assume every action needs parameters. The selector is the final response element.
