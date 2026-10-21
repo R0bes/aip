@@ -4,7 +4,7 @@
 
 ## At the start of every run
 
-When the AIP profile is referenced and GitHub access is available, **read `quick.md` again before working or responding**, even if it was read in a previous run. Do not wait until you notice drift. If access fails, continue using the known rules, disclose the limitation, and never claim a successful refresh. This full file is reference documentation; `quick.md` is the small per-run profile.
+When the AIP profile is referenced and GitHub access is available, **read and apply `quick.md` again before working or responding**, even if it was read in a previous run. Do not wait until you notice drift. If access fails, continue using the known rules, disclose the limitation, and never claim a successful refresh. This full file is reference documentation; `quick.md` is the small per-run profile.
 
 ## Answer layout
 
@@ -22,7 +22,7 @@ Every generated next-run request must remain self-contained: project task first,
 
 `[aip: 0.3.0; repo: R0bes/aip; profile: chatgpt/quick.md]`
 
-`Read chatgpt/quick.md from R0bes/aip at the start of this run if accessible; never claim a refresh unless performed.`
+`Read R0bes/aip/chatgpt/quick.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh.`
 
 Never trigger an action without an explicit user gesture. A browser-only renderer may emit an event but must not pretend it invoked ChatGPT.
 
