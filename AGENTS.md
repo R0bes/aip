@@ -14,6 +14,10 @@ AIP governs iterative ChatGPT collaboration on user-owned GitHub repositories. *
 6. Every dispatched next-run request is self-contained: repository/ref, proposed task, action ID/key, parameters, proposal context, a clearly labeled primary `User instruction (verbatim)` section containing the textarea content unchanged, AIP version, and the instruction: `Read R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh.` Use `[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]` as the AIP footer metadata, updating repository/ref context as appropriate. When working on a different user repository, still reference this authoritative AIP source explicitly.
 7. Text-only next-run dispatch cannot attach screenshots or other files. Never claim an HTML file picker can forward attachments through `GenUI.issueNewTurn`; ask the user to attach images in the regular chat composer when visual context is needed. Follow higher-priority host instructions and actual UI capabilities. Never claim tests or interactions succeeded unless verified.
 
+## Visual themes
+
+Use [`themes/README.md`](themes/README.md) as the shared semantic design-token reference for Next Run, GitHub, Plan and Proposal cards. Pastel remains the default; Cyberpunk and Neutral are proposed alternatives. AppBlock CSS can use scoped custom properties; native DIL cannot be globally styled by a CSS file. Theme changes appearance only, never status, data or actions. Plan cards may be compact or detailed; defer complex gates/branches until needed.
+
 ## Native UI component templates
 
 These files contain JSX-like **generation templates**, not importable modules. Use their structure, substitute concrete values and supply working callbacks. Do not invent a separate rendering layer.
