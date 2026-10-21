@@ -31,7 +31,7 @@ Only a genuine user gesture invokes an action. Capture the selected action and i
 
 ## Optional supplemental text
 
-A selector MAY carry user-supplied supplemental text. The text input is optional, not required to be persistently visible. A renderer MAY expose a compact paste affordance and attach the captured text verbatim to the next invocation. It MUST NOT claim clipboard access unless the host actually grants it; if direct paste is unavailable, it SHOULD provide an explicit user-controlled paste field. Never access clipboard contents automatically or without a user gesture. The text must remain reviewable before dispatch. Future attachment types are not defined in this draft.
+A selector MAY carry user-supplied supplemental text per action. An adapter may keep a tiny always-mounted input visible as a `+` affordance to support mouse-driven paste; this input must be focusable, editable, and scoped to its own action. A renderer MAY expose a compact paste affordance and attach the captured text verbatim to the next invocation. It MUST NOT claim clipboard access unless the host actually grants it; if direct paste is unavailable, it SHOULD provide an explicit user-controlled paste field. Never access clipboard contents automatically or without a user gesture. The text must remain reviewable before dispatch. Future attachment types are not defined in this draft.
 
 ## Version reference and settings
 
@@ -43,7 +43,7 @@ Show numbered actions. Bare `0` or `1` selects defaults; accept `1 depth=4` and 
 
 ## Rendering recommendations (non-normative)
 
-Prefer compact buttons for parameterless actions and compact action-specific controls (checkboxes, sliders, selects, multiline text) where needed. Avoid ambiguous click targets. Provide accessible labels, keyboard interaction, visible defaults, and responsive wrapping.
+Prefer compact, information-rich action cards for parameterless actions and compact action-specific controls (checkboxes, sliders, selects, multiline text) where needed. Avoid ambiguous click targets. Provide accessible labels, keyboard interaction, visible defaults, and responsive wrapping.
 
 ## Portability and versioning
 
