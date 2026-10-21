@@ -11,3 +11,7 @@ Run proposal cards remain the final section of the answer. Prefer horizontal arr
 ## Layout and scope
 
 Use one top header for repository/ref, optional run reference, AIP version and icon-only Settings. Do not duplicate the version in a bottom rail. GitHub change cards may expand/collapse details as warranted, and may be repeated for different repositories/branches or combined into an explicit comparison card. Distinguish edited, committed, pushed and deployed states. Next-run options are optional and have no fixed count.
+
+## Narrative placement and expandable cards
+
+Render the outlined context header at the start of the response. Place result cards inline with surrounding ordinary prose when helpful, rather than forcing all cards into a single block. Size each card to its content; a GitHub change card need not span the whole page. A result card may expand/collapse its detailed evidence on card click; copy and feedback controls remain independent. Next-run proposal cards are always the last rendered element, with nothing below them.
