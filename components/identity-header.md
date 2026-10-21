@@ -28,3 +28,7 @@ Place a subtle classic gear icon (`<icon name="settings"/>`) at the far right of
 Offer theme selection (Cyberpunk, Pastel, Neutral), applied immediately to all theme-aware components in the current response through shared DIL state. The chosen theme is also included as a self-contained parameter in the next-run handoff.
 
 Do **not** offer a "Save as AIP default" repository-setting action. The panel must not include agent-personal-rule controls or instructions; users manage their own agent preferences outside AIP. No settings service, AIP persistence, local storage, new renderer or cross-chat persistence. Use existing semantic tokens in `themes/README.md`; keep theme choice separate from task selection and preserve native Next Run dispatch.
+
+## Integration invariant
+
+The settings disclosure MUST NOT replace, simplify, or alter the accepted hybrid Next Run input. Keep the existing **real morphing HTML textarea** (40px circular idle state with waveform/I-beam/lower-arrow SVG; expands on focus; collapses only when empty and blurred), bound to DIL state. A plain always-expanded DIL `<input>` or `<textarea>` is a regression. Keep the separate native circular-arrow/play `<pressable>` for dispatch. Theme changes recolor both controls via shared state; they do not change their interaction model. When rendering the full AIP UI, verify the header gear, cards, morphing textarea and native dispatch together. The selected theme may be passed to the next run; never add persistence or agent-preference controls.
