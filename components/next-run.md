@@ -2,13 +2,11 @@
 
 ## Shared theme application
 
-Apply [theme tokens](../themes/README.md) to **the whole Next Run composition**, not only the cards. The chosen theme applies to card surfaces, text, border, selected outline/glow, inline controls and palette previews where appropriate. **Do not theme the shared input field, its container, text, caret, focus or placeholder.** Only the existing speech-bubble icon may be color-accented if supported. The minimal identity header follows the same theme (see `components/identity-header.md`). Keep the rocket native and accessible; its host styling cannot be overridden with AppBlock CSS. The current four-card HTML below is a **Pastel example**: when a different theme (e.g. Cyberpunk) is selected, replace hardcoded colors with the corresponding scoped CSS variables on the AppBlock root. Do not pretend a stylesheet can cross AppBlock/native boundaries.
+Use the semantic tokens from [themes/README.md](../themes/README.md). The accepted Cyberpunk variant uses cyan (#50E4DD), dark translucent surfaces, and subtle glow. The shared textarea itself morphs between a circular 40×40 icon state and an expanded editing state. Its circular shell and the native rocket should appear visually coordinated; host-native rocket colors cannot be forced by AppBlock CSS. Do not pretend CSS crosses AppBlock/native boundaries.
 
-Suggested scoped variables: `--aip-surface`, `--aip-surface-alt`, `--aip-text`, `--aip-muted`, `--aip-border`, `--aip-accent`, `--aip-glow`, `--aip-radius`. Example: `background:linear-gradient(145deg,var(--aip-surface),var(--aip-surface-alt))`; `color:var(--aip-text)`; selected card `border-color:var(--aip-accent)` and `box-shadow:0 0 0 2px var(--aip-glow)`. Keep the optional color-palette action's user-picked colors distinct from the global AIP theme. Pass the selected theme name in the next-run parameters or context when relevant; never claim persistence.
+The circular icon is an SVG with three audio bars, a nearby I-beam cursor and a separate horizontal arrow beneath both. It is decorative: **the circle is the actual textarea, not a separate insert or expand button**. Focusing it expands the same textarea; typing and clipboard paste use ordinary browser caret/selection behavior. When empty and unfocused it collapses. Preserve text when blurred; a nonempty field stays expanded.
 
-For plan-aware actions such as **"Develop until gate"**, include the gate ID, type, required evidence, stop conditions, and status snapshot in the self-contained handoff. Do not assume the agent can run local-only commands or approve human gates; stop and request evidence/approval when needed.
-
-Read [AGENTS.md](../AGENTS.md) first. This is a **ChatGPT response-generation example**, not a standalone renderer, package, or design system. Replace sample tasks, repository/ref, IDs and text with grounded values. The established pastel/glow style is the default.
+The final preview was Cyberpunk; Pastel and Neutral can reuse the same interaction with theme-specific colors. Avoid extra renderers, state persistence or infrastructure.
 
 ## Contract
 
@@ -16,7 +14,7 @@ Read [AGENTS.md](../AGENTS.md) first. This is a **ChatGPT response-generation ex
 - Cards in a **horizontal group share height**; cards in a **vertical group share width**. Nested horizontal/vertical groups are permitted (one tall card next to two stacked cards). Prefer content-aware grouping and concise copy; avoid artificial minimum heights and `margin-top:auto` on controls. A row may have modest empty space to preserve equal height; avoid large unused areas.
 - All cards share the same basic composition. Add controls **only when meaningful**: a fine-line slider with *visible* step labels, checkboxes, radio buttons, round color pickers without hex labels, selectable editable color palettes, or a single base color for palette generation on the next run. Controls belong **inside** their card and select that action when changed. Use accessible native HTML input semantics.
 - Selection is exclusive and indicated **only** by a stronger outline and subtle glow. Do not add selection dots, checkmarks or badges. Keep softly tinted lavender/cyan surfaces.
-- Use one shared, borderless, transparent HTML textarea with only `💬` as its placeholder, and a single **native** icon-only rocket immediately to its right. HTML can change bound state but **cannot dispatch** a ChatGPT turn. Only the native rocket invokes `GenUI.issueNewTurn`.
+- Use one shared real HTML textarea inside a morphing 40px circular shell. Empty/unfocused: show the agreed SVG centered, hide the caret and text. Focused or nonempty: smoothly expand to available width, hide the icon, expose normal text and caret; support direct typing, selection, Ctrl+V and multiple lines. Keep a single **native** icon-only rocket to its right. HTML may update bound text but **cannot dispatch** a ChatGPT turn. Only the native rocket invokes `GenUI.issueNewTurn`.
 - Keep selected key, parameter values and input text in DIL state. A valid leading `N:` prefix in the shared text overrides the clicked card at dispatch, without stripping or altering **any** text from `User instruction (verbatim)`. Include only the effective action's parameters in the handoff.
 - No file attachments or Enter-to-send through AppBlock. Do not claim runtime verification merely because a template is committed.
 
@@ -204,26 +202,50 @@ render();
 </script>
 ```
 
-### Shared input AppBlock HTML
+### Shared morphing textarea AppBlock HTML
+
+The circular shell is **not a button**. The textarea is present in both states. Its native focus is the only expansion trigger; no clipboard API, clipboard interception or fake insertion action is necessary.
 
 ```html
 <div id="aip-input-UNIQUE">
 <style>
-#aip-input-UNIQUE textarea{display:block;width:100%;min-height:32px;max-height:150px;resize:none;overflow-y:auto;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;padding:6px 2px;color:inherit;font:14px system-ui;line-height:1.5}
-#aip-input-UNIQUE textarea::placeholder{color:#9887bf;opacity:1}
+#aip-input-UNIQUE .space{display:flex;min-width:0}
+#aip-input-UNIQUE .morph{position:relative;box-sizing:border-box;width:40px;height:40px;flex:0 0 40px;overflow:hidden;border-radius:50%;border:1px solid #50e4dd99;background:linear-gradient(145deg,#1b3746,#18243a);box-shadow:0 0 10px #50e4dd25;transition:width .32s ease,flex-basis .32s ease,border-radius .32s ease}
+#aip-input-UNIQUE .morph.expanded{width:100%;flex:1 1 100%;border-radius:16px}
+#aip-input-UNIQUE .glyph{position:absolute;left:8px;top:8px;width:23px;height:23px;color:#50e4dd;pointer-events:none;transition:opacity .14s}
+#aip-input-UNIQUE .morph.expanded .glyph{opacity:0}
+#aip-input-UNIQUE textarea{position:absolute;inset:0;box-sizing:border-box;width:100%;height:100%;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;resize:none;overflow:auto;padding:9px 12px;color:#eef5ff;font:14px/20px system-ui;caret-color:#50e4dd;opacity:0;cursor:text}
+#aip-input-UNIQUE .morph.expanded textarea{opacity:1;transition:opacity .12s .12s}
+@media(prefers-reduced-motion:reduce){#aip-input-UNIQUE .morph,#aip-input-UNIQUE .glyph,#aip-input-UNIQUE textarea{transition:none}}
 </style>
-<textarea rows="1" placeholder="💬" aria-label="Zusätzliche Anweisung"></textarea>
+<div class="space"><div class="morph">
+<svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M3 8v5 M6 5v11 M9 8v5"/>
+<path d="M12 5h5 M14.5 5v11 M12 16h5"/>
+<path d="M2 20h20 M19 17l3 3-3 3"/>
+</svg>
+<textarea rows="1" aria-label="Zusätzliche Anweisung"></textarea>
+</div></div>
 </div>
 <script>
 (()=>{
-const f=document.querySelector("#aip-input-UNIQUE textarea");
-const resize=()=>{f.style.height="auto";f.style.height=Math.min(f.scrollHeight,150)+"px"};
-f.addEventListener("input",()=>{resize();globalThis.__bindings?.setValue?.(f.value)});
-globalThis.__effect?.(()=>{const v=globalThis.__bindings?.value;if(typeof v==="string"&&f.value!==v){f.value=v;resize()}});
-resize();
+const root=document.getElementById("aip-input-UNIQUE");
+const shell=root.querySelector(".morph"),field=root.querySelector("textarea");
+const sync=()=>{
+ const active=document.activeElement===field||field.value.length>0;
+ shell.classList.toggle("expanded",active);
+ shell.style.height=Math.min(150,Math.max(40,field.scrollHeight+2))+"px";
+};
+field.addEventListener("focus",sync);
+field.addEventListener("blur",sync);
+field.addEventListener("input",()=>{sync();globalThis.__bindings?.setValue?.(field.value)});
+globalThis.__effect?.(()=>{const v=globalThis.__bindings?.value;if(typeof v==="string"&&field.value!==v){field.value=v;sync()}});
+sync();
 })();
 </script>
 ```
+
+**Host limitation:** The rocket remains a native DIL button with the existing `GenUI.issueNewTurn` callback. The AppBlock can render a matching cyan circle but cannot trigger that host action. If the host cannot give the native rocket the exact cyan styling, preserve working dispatch and accessibility rather than substituting a nonfunctional HTML rocket. The example's surrounding `row` and button stay as defined above.
 
 ## Adaptation checklist
 
