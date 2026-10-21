@@ -2,7 +2,7 @@
 
 ## Shared theme application
 
-Use the semantic tokens from [themes/README.md](../themes/README.md). The accepted Cyberpunk variant uses cyan (#50E4DD), dark translucent surfaces, and subtle glow. The shared textarea itself morphs between a circular 40×40 icon state and an expanded editing state. Its circular shell and the native Next Run button should appear visually coordinated; host-native rocket colors cannot be forced by AppBlock CSS. Do not pretend CSS crosses AppBlock/native boundaries.
+Use the semantic tokens from [themes/README.md](../themes/README.md). The accepted Cyberpunk variant uses cyan (#50E4DD), dark translucent surfaces, and subtle glow. The shared textarea itself morphs between a circular 40×40 icon state and an expanded editing state. Its circular shell and the native Next Run button should appear visually coordinated; host-native Next Run trigger colors cannot be forced by AppBlock CSS. Do not pretend CSS crosses AppBlock/native boundaries.
 
 The circular icon is an SVG with three audio bars, a nearby I-beam cursor and a separate horizontal arrow beneath both. It is decorative: **the circle is the actual textarea, not a separate insert or expand button**. Focusing it expands the same textarea; typing and clipboard paste use ordinary browser caret/selection behavior. When empty and unfocused it collapses. Preserve text when blurred; a nonempty field stays expanded.
 
@@ -14,7 +14,7 @@ The final preview was Cyberpunk; Pastel and Neutral can reuse the same interacti
 - Cards in a **horizontal group share height**; cards in a **vertical group share width**. Nested horizontal/vertical groups are permitted (one tall card next to two stacked cards). Prefer content-aware grouping and concise copy; avoid artificial minimum heights and `margin-top:auto` on controls. A row may have modest empty space to preserve equal height; avoid large unused areas.
 - All cards share the same basic composition. Add controls **only when meaningful**: a fine-line slider with *visible* step labels, checkboxes, radio buttons, round color pickers without hex labels, selectable editable color palettes, or a single base color for palette generation on the next run. Controls belong **inside** their card and select that action when changed. Use accessible native HTML input semantics.
 - Selection is exclusive and indicated **only** by a stronger outline and subtle glow. Do not add selection dots, checkmarks or badges. Keep softly tinted lavender/cyan surfaces.
-- Use one shared real HTML textarea inside a morphing 40px circular shell. Empty/unfocused: show the agreed SVG centered, hide the caret and text. Focused or nonempty: smoothly expand to available width, hide the icon, expose normal text and caret; support direct typing, selection, Ctrl+V and multiple lines. Keep a single **native** icon-only Next Run button to its right, with the custom circular-arrow/play SVG from [`assets/next-run.svg`](../assets/next-run.svg). HTML may update bound text but **cannot dispatch** a ChatGPT turn. Only the native rocket invokes `GenUI.issueNewTurn`.
+- Use one shared real HTML textarea inside a morphing 40px circular shell. Empty/unfocused: show the agreed SVG centered, hide the caret and text. Focused or nonempty: smoothly expand to available width, hide the icon, expose normal text and caret; support direct typing, selection, Ctrl+V and multiple lines. Keep a single **native** icon-only Next Run pressable to its right, with the custom circular-arrow/play SVG from [`assets/next-run.svg`](../assets/next-run.svg). HTML may update bound text but **cannot dispatch** a ChatGPT turn. Only the native Next Run trigger invokes `GenUI.issueNewTurn`.
 - Keep selected key, parameter values and input text in DIL state. A valid leading `N:` prefix in the shared text overrides the clicked card at dispatch, without stripping or altering **any** text from `User instruction (verbatim)`. Include only the effective action's parameters in the handoff.
 - No file attachments or Enter-to-send through AppBlock. Do not claim runtime verification merely because a template is committed.
 
@@ -22,7 +22,7 @@ The final preview was Cyberpunk; Pastel and Neutral can reuse the same interacti
 
 The example intentionally demonstrates **one slider, checkboxes, radio buttons and an editable five-color palette**. These are independent optional card capabilities, not a mandatory set. For fewer or more choices, change the markup and action definitions together; use a row, stack, or nested composition as appropriate.
 
-### DIL response structure\n\nThe native button uses the same SVG paths as [`assets/next-run.svg`](../assets/next-run.svg), inlined as a DIL `<svg>` child. Preserve the native `<button>` and its `GenUI.issueNewTurn` callback. The icon inherits `currentColor`; the button uses `pill`, `uniform`, `size="lg"` and `color="primary"` where supported. Do not substitute an HTML button.\n
+### DIL response structure\n\nThe native pressable uses the same SVG paths as [`assets/next-run.svg`](../assets/next-run.svg), inlined as a DIL `<svg>` child. Preserve the native `<pressable>` and its `GenUI.issueNewTurn` callback. The icon uses the explicit Cyberpunk accent `#50E4DD`; the native pressable uses a 44px circular dark-blue surface and cyan border. Do not substitute an HTML button.\n
 
 ```jsx
 {@body const [choiceState,setChoiceState]=DIL.useState({
@@ -53,7 +53,7 @@ The example intentionally demonstrates **one slider, checkboxes, radio buttons a
         <!-- Paste the shared-input HTML below; replace UNIQUE in all IDs. -->
       </AppBlock>
     </box>
-    <button size="lg" pill uniform color="primary" label="Ausgewählten nächsten Run starten"
+    <pressable width="44px" height="44px" background="#1B3746" border={{size:1,color:"#50E4DD"}} radius="full" align="center" justify="center" tooltip="Ausgewählten nächsten Run starten"
       onClick={()=>{
         const prefix=instruction.match(/^\s*([0-9])\s*:/);
         const key=prefix&&actions.some(a=>a.id===prefix[1])?prefix[1]:choiceState.selected;
@@ -70,8 +70,8 @@ The example intentionally demonstrates **one slider, checkboxes, radio buttons a
           "\nRead R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh."
         );
       }}>
-      <svg viewBox="0 0 24 24" width="23px" height="23px" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">\n        <path d="M19.4 8.5A8 8 0 1 0 20 12"/>\n        <path d="M19.4 3.9v4.6h-4.6"/>\n        <path d="m10 8.8 5 3.2-5 3.2z"/>\n      </svg>
-    </button>
+      <svg viewBox="0 0 24 24" width="23px" height="23px" fill="none" stroke="#50E4DD" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">\n        <path d="M19.4 8.5A8 8 0 1 0 20 12"/>\n        <path d="M19.4 3.9v4.6h-4.6"/>\n        <path d="m10 8.8 5 3.2-5 3.2z"/>\n      </svg>
+    </pressable>
   </row>
 </box>
 ```
@@ -245,7 +245,7 @@ sync();
 </script>
 ```
 
-**Host limitation:** The Next Run trigger remains a native DIL button with the existing `GenUI.issueNewTurn` callback. The AppBlock can render a matching cyan circle but cannot trigger that host action. If the host cannot give the native button the exact cyan styling, preserve working dispatch and accessibility rather than substituting a nonfunctional HTML rocket. The example's surrounding `row` and button stay as defined above.
+**Host limitation:** The Next Run trigger remains a native DIL button with the existing `GenUI.issueNewTurn` callback. The AppBlock can render a matching cyan circle but cannot trigger that host action. If the host cannot give the native pressable the exact cyan styling, preserve working dispatch and accessibility rather than substituting a nonfunctional HTML rocket. The example's surrounding `row` and button stay as defined above.
 
 ## Adaptation checklist
 
