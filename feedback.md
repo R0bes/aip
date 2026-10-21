@@ -2,7 +2,7 @@
 
 ## User feedback
 
-Ordinary conversational feedback is the default. **Do not render per-card thumbs-up/down** in the current ChatGPT software-development profile. No implicit telemetry, persistence or inferred rating is allowed.
+Ordinary conversational feedback is the default. **Use thumbs-up/down only on dedicated agent improvement proposal cards**, never on ordinary action or result cards. No implicit telemetry, persistence or inferred rating is allowed.
 
 ## Scope discipline
 
@@ -10,7 +10,7 @@ Judge suggestions by whether they improve the ChatGPT GitHub-development experie
 
 ## Optional improvement proposals
 
-Offer a concrete improvement proposal for the active project or AIP only when it is worth the user's attention. Include expected benefit and trade-off, without quotas. No proposal is preferable to filler.
+Offer a concrete agent-originated improvement proposal for the active project or AIP only when it is worth the user's attention. Use a distinct proposal card with expected benefit/trade-off and functional 👍/👎 controls. 👍 expresses interest or approval for discussion, **not authorization to change code**; 👎 rejects the idea for now. Each control sends explicit conversational feedback; never silently persist votes or infer consent to implement. No proposal is preferable to filler.
 
 ## Experimental calibration (opt-in)
 
