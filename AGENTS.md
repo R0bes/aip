@@ -21,6 +21,7 @@ These files contain JSX-like **generation templates**, not importable modules. U
 - [`components/github-result.md`](components/github-result.md) — verified GitHub result card.
 - [`components/next-run.md`](components/next-run.md) — editable Next Run with inline icon-only 🚀 dispatch.
 - [`components/proposal.md`](components/proposal.md) — optional improvement proposal with 👍 acceptance.
+- [`components/next-run-html-experiment.md`](components/next-run-html-experiment.md) — optional light HTML/CSS input experiment; not a replacement for native dispatch. Enter cannot directly invoke the ChatGPT host action.
 
 ## Maintenance
 
