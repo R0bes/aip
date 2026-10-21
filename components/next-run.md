@@ -4,12 +4,12 @@ Read [AGENTS.md](../AGENTS.md) first. This is a **ChatGPT response-generation ex
 
 ## Contract
 
-- Curate a meaningful single-digit number of actions; do not pad to a fixed count. Key \`0\` is useful continuation where applicable. Each card has a small key in the corner, a consistently sized **20px icon** beside the title, a concise description and specific bullet points or numbered steps.
-- Cards in a **horizontal group share height**; cards in a **vertical group share width**. Nested horizontal/vertical groups are permitted (one tall card next to two stacked cards). Prefer content-aware grouping and concise copy; avoid artificial minimum heights and \`margin-top:auto\` on controls. A row may have modest empty space to preserve equal height; avoid large unused areas.
+- Curate a meaningful single-digit number of actions; do not pad to a fixed count. Key `0` is useful continuation where applicable. Each card has a small key in the corner, a consistently sized **20px icon** beside the title, a concise description and specific bullet points or numbered steps.
+- Cards in a **horizontal group share height**; cards in a **vertical group share width**. Nested horizontal/vertical groups are permitted (one tall card next to two stacked cards). Prefer content-aware grouping and concise copy; avoid artificial minimum heights and `margin-top:auto` on controls. A row may have modest empty space to preserve equal height; avoid large unused areas.
 - All cards share the same basic composition. Add controls **only when meaningful**: a fine-line slider with *visible* step labels, checkboxes, radio buttons, round color pickers without hex labels, selectable editable color palettes, or a single base color for palette generation on the next run. Controls belong **inside** their card and select that action when changed. Use accessible native HTML input semantics.
 - Selection is exclusive and indicated **only** by a stronger outline and subtle glow. Do not add selection dots, checkmarks or badges. Keep softly tinted lavender/cyan surfaces.
-- Use one shared, borderless, transparent HTML textarea with only \`💬\` as its placeholder, and a single **native** icon-only rocket immediately to its right. HTML can change bound state but **cannot dispatch** a ChatGPT turn. Only the native rocket invokes \`GenUI.issueNewTurn\`.
-- Keep selected key, parameter values and input text in DIL state. A valid leading \`N:\` prefix in the shared text overrides the clicked card at dispatch, without stripping or altering **any** text from \`User instruction (verbatim)\`. Include only the effective action's parameters in the handoff.
+- Use one shared, borderless, transparent HTML textarea with only `💬` as its placeholder, and a single **native** icon-only rocket immediately to its right. HTML can change bound state but **cannot dispatch** a ChatGPT turn. Only the native rocket invokes `GenUI.issueNewTurn`.
+- Keep selected key, parameter values and input text in DIL state. A valid leading `N:` prefix in the shared text overrides the clicked card at dispatch, without stripping or altering **any** text from `User instruction (verbatim)`. Include only the effective action's parameters in the handoff.
 - No file attachments or Enter-to-send through AppBlock. Do not claim runtime verification merely because a template is committed.
 
 ## Complete example: four cards with different controls
@@ -18,7 +18,7 @@ The example intentionally demonstrates **one slider, checkboxes, radio buttons a
 
 ### DIL response structure
 
-\`\`\`jsx
+```jsx
 {@body const [choiceState,setChoiceState]=DIL.useState({
   selected:"0",
   params:{
@@ -68,11 +68,11 @@ The example intentionally demonstrates **one slider, checkboxes, radio buttons a
     </button>
   </row>
 </box>
-\`\`\`
+```
 
 ### Cards AppBlock HTML
 
-\`\`\`html
+```html
 <div id="aip-cards-UNIQUE">
 <style>
 #aip-cards-UNIQUE{font-family:system-ui;color:#37384c;padding:3px}
@@ -194,11 +194,11 @@ globalThis.__effect?.(()=>{const v=globalThis.__bindings?.value;if(v&&typeof v==
 render();
 })();
 </script>
-\`\`\`
+```
 
 ### Shared input AppBlock HTML
 
-\`\`\`html
+```html
 <div id="aip-input-UNIQUE">
 <style>
 #aip-input-UNIQUE textarea{display:block;width:100%;min-height:32px;max-height:150px;resize:none;overflow-y:auto;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;padding:6px 2px;color:inherit;font:14px system-ui;line-height:1.5}
@@ -215,12 +215,12 @@ globalThis.__effect?.(()=>{const v=globalThis.__bindings?.value;if(typeof v==="s
 resize();
 })();
 </script>
-\`\`\`
+```
 
 ## Adaptation checklist
 
-- Replace all \`UNIQUE\` IDs consistently per response, and adapt the action definitions, HTML cards, and parameter defaults together.
+- Replace all `UNIQUE` IDs consistently per response, and adapt the action definitions, HTML cards, and parameter defaults together.
 - Use meaningful action-specific parameter keys; only send the effective action's values.
-- Keep every \`globalThis.__bindings\` and \`globalThis.__effect\` access optional-chained.
+- Keep every `globalThis.__bindings` and `globalThis.__effect` access optional-chained.
 - In mixed/nested layouts, preserve the same card anatomy and exclusive selection. CSS Grid with equal-height row items and nested flex/grid columns is sufficient; do not build a general layout engine.
-- This file is the authoritative **Next Run example**; historical experiments in \`next-run-html-experiment.md\` are superseded. GitHub Result remains to be redesigned; Proposals remain experimental.
+- This file is the authoritative **Next Run example**; historical experiments in `next-run-html-experiment.md` are superseded. GitHub Result remains to be redesigned; Proposals remain experimental.
