@@ -29,3 +29,9 @@ Adapters may implement these elements as compact graphical panels with copy cont
 ## Improvement proposal and feedback
 
 An agent MAY offer a concise, actionable improvement proposal after a run if there is a substantive reason. Proposals can target the active project or AIP itself and should include expected benefit and trade-off. No proposal is better than a low-value proposal. An optional agent self-rating is explicitly subjective and should not masquerade as external evaluation. Human ratings may be compared to calibrate recommendation thresholds. See [feedback.md](feedback.md).
+
+## Structured report payload
+
+The experimental [report.schema.json](report.schema.json) describes one top header, an ordered array of optional inline blocks (text, generic GitHub interactions, copyable artifacts, and notices), and an optional `next_run` action descriptor. The `next_run` element is **last in rendering order** regardless of how blocks are laid out. An absent `next_run` is exceptional but valid when no meaningful continuation exists. This does not mean the normal project workflow should hide continuation options.
+
+Generic GitHub blocks identify their operation; titles describe the specific event, not the block type. Generic artifact blocks have optional titles/descriptions and verbatim copyable content. UI expansion and clipboard behavior belong to the adapter; the payload is not itself a renderer.
