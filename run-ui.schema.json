@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/R0bes/aip/blob/main/run-ui.schema.json",
-  "title": "AIP action selector v0.2",
+  "title": "AIP action selector v0.3",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,7 +11,7 @@
   ],
   "properties": {
     "protocol_version": {
-      "const": "0.2.0"
+      "const": "0.3.0"
     },
     "context": {
       "type": "string",
@@ -23,6 +23,9 @@
       "items": {
         "$ref": "#/$defs/action"
       }
+    },
+    "meta": {
+      "$ref": "#/$defs/meta"
     }
   },
   "$defs": {
@@ -42,7 +45,7 @@
         },
         "key": {
           "type": "string",
-          "pattern": "^[0-9]+$"
+          "pattern": "^(0|[1-9][0-9]*)$"
         },
         "title": {
           "type": "string",
@@ -87,7 +90,8 @@
           ],
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "label": {
               "type": "string"
@@ -112,7 +116,8 @@
           ],
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "label": {
               "type": "string"
@@ -142,7 +147,8 @@
           ],
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "label": {
               "type": "string"
@@ -172,7 +178,8 @@
           ],
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "label": {
               "type": "string"
@@ -189,6 +196,38 @@
           }
         }
       ]
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "title",
+            "instruction"
+          ],
+          "properties": {
+            "id": {
+              "const": "settings"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "instruction": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
     }
   }
 }
