@@ -1,4 +1,4 @@
-# Next Run · experimental light HTML/CSS input
+# Earlier Next Run experiments (superseded)\n\nThis file preserves exploratory prototypes and historical verification notes. **Do not use it as the current Next Run UI.** The accepted hybrid template is [next-run.md](next-run.md). The experiments below are retained only as reference.\n\n# Next Run · experimental light HTML/CSS input
 
 Experimental presentation only. Preserve the complete card composition (header, description, colored accent, softly tinted background, subtle glow, input row); lighter means less saturated, **not** a blank white textarea. Read `AGENTS.md` first. The **native** `components/next-run.md` remains the supported dispatch implementation. Do not claim this HTML input can directly call `GenUI.issueNewTurn`: an embedded AppBlock cannot invoke that host action. A native button outside AppBlock can dispatch its bound text on a user click; Enter inside AppBlock cannot trigger the native button. Do not use simulated dispatch.
 
