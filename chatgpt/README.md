@@ -24,3 +24,7 @@ Copy controls use an icon with accessible label and tooltip. A report export mus
 ## Fallback
 
 Use concise numbered text actions if the host cannot render the controls. Only an explicit user gesture dispatches a self-contained follow-up request.
+
+## Single-field supplemental input (current profile override)
+
+The software-development profile now uses one rounded input/preview region: empty state shows a large copy glyph, populated state shows truncated text, editing expands borderlessly in place and collapses on blur. This supersedes any prior tiny capture input plus separate preview instructions in this document.
