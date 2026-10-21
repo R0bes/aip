@@ -1,30 +1,19 @@
 # ChatGPT adapter — AIP 0.3.0 draft
 
-ChatGPT is AIP's first renderer and dispatch adapter, not part of the platform-neutral core. Load [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md) when applicable. A public repository is not automatically loaded or synchronized.
+ChatGPT is AIP's first renderer and dispatch adapter, not the platform-neutral protocol. See [protocol.md](../protocol.md), [output.md](../output.md), and [software-development.md](software-development.md). Repository instructions are not automatically loaded or synchronized.
 
-## Rendering contract
+## Rendering
 
-- Begin the actual answer with one lightly outlined context header. Show repository/ref only when known, one compact version label, and an icon-only **gear** settings affordance.
-- Use ordinary prose and inline result cards as warranted. Card titles describe the actual content, **not** the card type. Use a consistent visual weight and size for all leading icons.
-- Result cards may expand on clicking their main surface; a dedicated chevron is unnecessary. Hover/focus may subtly change the border or background. Nested copy controls never toggle expansion.
-- Use generic copyable artifacts with optional titles/descriptions, and optional compact GitHub cards for changes, comparisons, commits, PRs or other GitHub interactions.
-- Only meaningful next-run action cards appear at the **very end**. No prose follows. Do not force exactly two cards or a scope selector.
-- An action without editable controls can dispatch on whole-card click. An action with inputs must protect editing from accidental dispatch; use a compact icon-only confirm control if necessary.
-- Use a small **always-mounted focusable input** per action to support first-click mouse paste. Preserve captured text verbatim; collapse it to a short in-place editable preview. Do not show a second editor or an edit pencil. Never claim clipboard-read or attachment support that the host does not provide.
-- Put the actual project task first in dispatched messages and unobtrusive AIP metadata last.
+Start with one outlined context header, including known repository/ref, one version label, and an icon-only settings gear **only if functional**. Interleave normal prose and optional inline result cards with content-specific titles and consistently sized icons. Result-card main surfaces may expand grounded details; nested copy actions remain independent.
 
-## Settings
+Render GitHub interactions and generic copyable commands/prompts when relevant. Offer a dedicated faithful report export when useful. Copy controls never execute. Do not invent hidden details, unsupported attachments, or clipboard access.
 
-The header gear is a **local interface-preferences affordance** (e.g. density, detail expansion, copy/report formatting, optional prompts) when the host can actually change those choices. It must never silently alter repository files, platform account settings, permissions or protocol versions. If no functional settings exist, omit or disable the gear rather than displaying a fake control. Persistence and sync are not implemented.
+Put compact next-run cards at the **very end**; nothing follows. The whole main card surface dispatches on an explicit click. Inputs must be isolated from dispatch. Do not force a fixed number of choices or generic scope switches.
 
-## Copy and attachments
+## Supplemental text
 
-Copy controls use an icon with accessible label and tooltip. A report export must serialize grounded run data and selected values, not assume the platform's native copy-response preserves interactive widgets. File/screenshot attachment transfer is not implemented in this draft; do not simulate an upload button.
+Use **one** focusable text field inside each next-run card. Empty state: a large copy icon displayed **inside** the field as a paste cue. Filled state: **all text remains visible and directly editable**, with multiline growth as needed. No separate + control, shortened preview, expand/collapse state, confirm button, or helper caption. The text is forwarded verbatim in a self-contained next-turn request.
 
-## Fallback
+## Settings and fallback
 
-Use concise numbered text actions if the host cannot render the controls. Only an explicit user gesture dispatches a self-contained follow-up request.
-
-## Single-field supplemental input (current profile override)
-
-The software-development profile now uses one rounded input/preview region: empty state shows a large copy glyph, populated state shows truncated text, editing expands borderlessly in place and collapses on blur. This supersedes any prior tiny capture input plus separate preview instructions in this document.
+The gear can adjust only real, local presentation options supported by the current host. Never pretend to change account settings or persist preferences. If no real options exist, omit/disable it. Use numbered text fallback if graphical controls are unavailable. Never dispatch without an explicit user action.
