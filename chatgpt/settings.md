@@ -7,6 +7,7 @@ When activated, start a new user-visible settings interaction. Show only setting
 ## Proposed session preferences
 
 - **Interface mode**: `development` (default) or `minimal`. Future domain profiles may be added.
+- **Supplemental text input**: `paste-on-demand` (default), `always-visible`, or `hidden`. `paste-on-demand` uses direct clipboard access only if the host permits it, otherwise a user-paste field.
 - **Density**: `compact` (default) or `comfortable`.
 - **Color accent**: `host-default` (default); offer additional choices only if supported by the host. Do not promise arbitrary CSS or theme control.
 - **Version information**: display the version that was actually read; optionally show the exact commit/revision if known.
