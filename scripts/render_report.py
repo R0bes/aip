@@ -90,7 +90,7 @@ document.querySelectorAll('.action').forEach(card=>{
   const repoName=report.header.repository||'unspecified';
   const profile='chatgpt/quick.md';
   const refresh='Read chatgpt/quick.md from R0bes/aip at the start of this run if accessible; never claim a refresh unless performed.';
-  const promptParts=[`Repository: ${repoName}`,report.header.ref?`Branch: ${report.header.ref}`:'',`Task: ${action.instruction}`,`Action: ${action.id} (key ${action.key})`,`Context: ${report.next_run.context}`,`Parameters: ${JSON.stringify(payload.parameters)}`,`Supplemental text (verbatim):\\n${supplemental_text}`,`[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]`,refresh];
+  const promptParts=[`Repository: ${repoName}`,report.header.ref?`Branch: ${report.header.ref}`:'',`Task: ${action.instruction}`,`Action: ${action.id} (key ${action.key})`,`Context: ${report.next_run.context}`,`Parameters: ${JSON.stringify(payload.parameters)}`,`Supplemental text (verbatim):\\n${supplemental_text}`,`[aip: ${report.protocol_version}; repo: R0bes/aip; profile: ${profile}]`,refresh];
   payload.prompt=promptParts.filter(Boolean).join('\\n');
   // No implicit agent execution: host must handle this explicit event.
   card.dispatchEvent(new CustomEvent('aip:invoke',{bubbles:true,detail:payload}));
