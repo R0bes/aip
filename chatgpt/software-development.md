@@ -27,3 +27,7 @@ Applies to collaborative software development, debugging, review and maintenance
 ## Grounding and integrity
 
 Report only verified edits, checks and deployments; distinguish docs from executable changes. Keep AIP protocol metadata at the end of generated follow-up prompts. Do not modify unrelated repositories. If a host lacks paste, attachment, hover or nested-click capabilities, use a functional fallback and state the limitation.
+
+## Compact capture affordance and editor lifecycle
+
+The supplemental capture input should be tiny, circular/pill-shaped, and display a larger, legible standard copy glyph (not a mirrored or tiny Unicode lookalike). Do not add instructional captions beneath the editor. After paste, keep the input compact and render a truncated preview beneath the card body. Clicking the preview expands its text in place with no visible editor border or secondary card. On blur or click outside, commit the edited value and collapse to the truncated preview. If the host cannot deliver blur/outside-click reliably, offer a keyboard-accessible fallback (Escape or Enter when appropriate) rather than leaving an uncloseable editor. Clicking the rest of the action card dispatches the run; interacting with capture/preview/editor must not dispatch.
