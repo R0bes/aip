@@ -2,7 +2,7 @@
 
 ChatGPT is AIP's first concrete rendering/dispatch target, **not** part of the core protocol.
 
-When available, render compact buttons and action-local checkbox, select, slider, and multiline text controls. On an explicit user action, send a new self-contained turn containing the chosen action ID, complete instruction, explicit parameter values, verbatim additional user text, and necessary project context.
+When available, render compact buttons and action-local checkbox, select, slider, and multiline text controls. Do not show a permanent generic additional-instructions textarea by default. Instead, provide a small paste affordance when supplemental text is useful. Prefer one-click clipboard paste only where host APIs and permission allow; otherwise reveal a field for user-driven paste (e.g. mouse context menu). Do not claim direct clipboard access in ChatGPT without verifying it. The pasted text must be visible/reviewable and forwarded verbatim. On an explicit user action, send a new self-contained turn containing the chosen action ID, complete instruction, explicit parameter values, verbatim additional user text, and necessary project context.
 
 Use numbered text fallback if controls are unavailable. Never silently invoke an action. The action selector belongs at the end of the response.
 
