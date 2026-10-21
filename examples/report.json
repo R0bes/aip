@@ -1,0 +1,49 @@
+{
+  "protocol_version": "0.3.0",
+  "header": {
+    "repository": "R0bes/aip",
+    "ref": "main"
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "text": "Consolidated the AIP report model and ChatGPT profile."
+    },
+    {
+      "type": "github",
+      "id": "changes-main",
+      "operation": "changes",
+      "repository": "R0bes/aip",
+      "ref": "main",
+      "title": "Report specification updated",
+      "summary": "Added structured report data and aligned UI guidance.",
+      "verification": "Schema validation pending.",
+      "expected_behavior": "Render the report header first, and only meaningful actions last."
+    },
+    {
+      "type": "artifact",
+      "id": "verify",
+      "kind": "command",
+      "content": "python scripts/validate.py",
+      "working_directory": "repository root"
+    },
+    {
+      "type": "artifact",
+      "id": "handoff",
+      "kind": "agent_prompt",
+      "content": "Review the AIP report schema and test coverage; report defects."
+    }
+  ],
+  "next_run": {
+    "protocol_version": "0.3.0",
+    "context": "Continue development in R0bes/aip.",
+    "actions": [
+      {
+        "id": "continue",
+        "key": "0",
+        "title": "Verify report schema",
+        "instruction": "Run schema and semantic regression tests and fix defects."
+      }
+    ]
+  }
+}
