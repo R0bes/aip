@@ -116,3 +116,26 @@ globalThis.__effect?.(()=>{
 ```
 
 For multiple groups in the same response, change the HTML root ID and AppBlock ID to unique values. HTML is only for presentation and selection; the native button remains the sole ChatGPT dispatch mechanism.
+
+
+## Agreed compact hybrid variant (2026-10-21)
+
+This is the accepted visual baseline for the next-run experiment, **not** a decision on responsive layouts or a general design system. Use three compact horizontal cards for this variant. Each card has its icon and title on the **same row**, a short useful description, and an exclusive selected state expressed **only through a stronger outline and subtle glow** (no dots, checkmarks or other selection indicators). Use softly tinted lavender/cyan surfaces. Do not silently substitute the older vertically stacked icon/title or native card layout.
+
+Below the cards, use **one shared HTML textarea**, with **transparent background, no border, no outline, no enclosing field surface or label**; its only placeholder is `💬`. Bind its value to DIL state. Place a single **native icon-only rocket button** immediately to its right, dispatching the selected action and the unchanged text via `GenUI.issueNewTurn`. AppBlock HTML must never claim to dispatch itself. Preserve the complete self-contained handoff and AGENTS.md refresh instruction.
+
+Implementation sketch for the card presentation:
+
+```css
+.cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.card { display:flex; flex-direction:column; text-align:left; border:1.5px solid #b6accd; border-radius:13px; padding:13px 12px; background:linear-gradient(145deg,#eee5fa,#dfe9f6); }
+.card .head { display:flex; align-items:center; gap:9px; }
+.card .glyph { flex:none; display:grid; place-items:center; width:24px; height:24px; }
+.card[aria-pressed="true"] { border:2px solid #866acb; box-shadow:0 0 0 2px #a58de639,0 4px 16px #8e78c650; }
+.shared-instruction { width:100%; border:0; outline:0; background:transparent; box-shadow:none; resize:none; }
+.shared-instruction::placeholder { color:#9887bf; opacity:1; }
+```
+
+Use accessible `aria-pressed` on each HTML card; on click update exactly one selected card and call `globalThis.__bindings?.setValue?.(id)`. Synchronize with `globalThis.__effect?.(() => ...)`; always optional-chain these globals. The instruction field uses a **separate** binding and synchronizes its input value to state. The native rocket reads both state values and sends the selected action's own task/key/context, with `User instruction (verbatim)` unchanged.
+
+**Not yet agreed:** adaptive card counts, responsive breakpoint behavior, variable-card layout, a shared design system. Do not treat these as implemented or approved merely because exploratory prototypes were shown.
