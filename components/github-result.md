@@ -1,5 +1,9 @@
 # GitHub cards — verified repository views
 
+## Shared theme
+
+Apply [themes/README.md](../themes/README.md) to **all three** GitHub views (verified result, PRs, branches). Use the same semantic surface, text, muted, border, accent and radius tokens as Next Run and Plan. For native DIL, map to supported presentation props; AppBlock CSS cannot style native cards. Cyberpunk uses dark surfaces and cyan accents, but repository facts, link targets and verification states remain unchanged. Informational GitHub cards have **no selection glow**. Use status text and icons, not color alone. The DIL examples below show a neutral native fallback; adapt presentation to the selected theme.
+
 Read [AGENTS.md](../AGENTS.md) first. **GitHub cards are a family of contextual views**, not one oversized card. Render only the views relevant to the run. This is DIL generation guidance, not an importable component. Match the existing compact visual language without imposing Next Run's selection controls on read-only results.
 
 ## Shared rules
