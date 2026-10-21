@@ -2,6 +2,8 @@
 
 AIP is a small convention for **iterative ChatGPT collaboration on user-owned GitHub repositories** (experimental version 0.3.0).
 
+The [theme tokens](themes/README.md) define a lightweight shared visual language (Pastel default; Cyberpunk and Neutral alternatives), without assuming one global CSS scope across native and HTML cards.
+
 The [`AGENTS.md`](AGENTS.md) file is the **single authoritative instruction source**. The component templates are:
 
 - [GitHub cards](components/github-result.md) — verified changes, open pull requests and branch overviews
