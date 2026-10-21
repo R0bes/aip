@@ -39,8 +39,8 @@ def render(report):
              '.header{display:flex;justify-content:space-between}.cards{display:flex;flex-wrap:wrap;gap:12px}',
              '.cards .card{flex:1 1 260px;margin:0;cursor:pointer}.muted{color:#a8afc0}',
              'button{cursor:pointer;background:#292f3c;color:inherit;border:1px solid #596073;border-radius:9px;padding:7px}',
-             'textarea{box-sizing:border-box;width:100%;background:#222835;color:inherit;border:0;border-radius:9px;padding:10px;resize:vertical}',
-             'textarea::placeholder{font-size:22px;color:#bec7db}pre{white-space:pre-wrap;overflow-wrap:anywhere}',
+             'textarea{box-sizing:border-box;width:100%;background:transparent;color:inherit;border:0;outline:0;box-shadow:none;border-radius:0;padding:3px 0;font:12px/1.35 system-ui;resize:vertical;min-height:24px}',
+             'textarea::placeholder{font-size:17px;color:#bec7db}textarea:focus{background:transparent;border:0;outline:0;box-shadow:none}pre{white-space:pre-wrap;overflow-wrap:anywhere}',
              'details{margin-top:8px}summary{cursor:pointer} .result{cursor:pointer} .result pre{cursor:text}',
              '</style><header class="header"><span>⌘ '+context+'</span><span class="muted">AIP '+safe(report["protocol_version"])+'</span></header>']
     for block in report["blocks"]:
