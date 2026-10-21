@@ -1,0 +1,45 @@
+<div id="aip-input-UNIQUE">
+<style>
+#aip-input-UNIQUE .shell{position:relative;box-sizing:border-box;width:40px;height:40px;max-width:100%;overflow:hidden;border:1px solid var(--aip-accent);border-radius:50%;background:var(--aip-surface);transition:width .3s ease,border-radius .3s ease}
+#aip-input-UNIQUE .shell.expanded{width:100%;min-height:72px;border-radius:12px}
+#aip-input-UNIQUE .symbol{position:absolute;inset:0;display:grid;place-items:center;color:var(--aip-accent);pointer-events:none}
+#aip-input-UNIQUE .symbol svg{width:23px;height:23px}
+#aip-input-UNIQUE .expanded .symbol{display:none}
+#aip-input-UNIQUE textarea{position:absolute;inset:0;box-sizing:border-box;width:100%;height:100%;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;resize:none;padding:10px 12px;color:var(--aip-text)!important;font:13px/1.5 system-ui;caret-color:var(--aip-accent);opacity:0;cursor:text}
+#aip-input-UNIQUE .expanded textarea{opacity:1}
+@media(prefers-reduced-motion:reduce){#aip-input-UNIQUE .shell{transition:none}}
+</style>
+<div class="shell">
+  <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 8v5 M6 5v11 M9 8v5"/>
+    <path d="M12 5h5 M14.5 5v11 M12 16h5"/>
+    <path d="M2 20h20 M19 17l3 3-3 3"/>
+  </svg></div>
+  <textarea aria-label="Zusätzliche Anweisung" placeholder="Zusätzliche Anweisung …"></textarea>
+</div>
+<script>
+(()=>{
+const root=document.getElementById("aip-input-UNIQUE");
+const shell=root.querySelector(".shell"),field=root.querySelector("textarea");
+const palettes={
+  Pastel:["#EEE5FA","#35374D","#866ACB"],
+  Cyberpunk:["#141824","#EEF5FF","#50E4DD"],
+  Neutral:["#F4F5F7","#232833","#4B647D"]
+};
+function render(){
+  const p=palettes[globalThis.__bindings?.theme]||palettes.Pastel;
+  ["--aip-surface","--aip-text","--aip-accent"].forEach((name,i)=>root.style.setProperty(name,p[i]));
+  shell.classList.toggle("expanded",document.activeElement===field||field.value.length>0);
+}
+field.addEventListener("focus",render);
+field.addEventListener("blur",render);
+field.addEventListener("input",()=>{render();globalThis.__bindings?.setValue?.(field.value)});
+globalThis.__effect?.(()=>{
+  const v=globalThis.__bindings?.value;
+  if(typeof v==="string"&&v!==field.value)field.value=v;
+  render();
+});
+render();
+})();
+</script>
+</div>
