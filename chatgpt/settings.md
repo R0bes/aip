@@ -1,22 +1,7 @@
-# ChatGPT settings interaction (draft)
+# AIP ChatGPT settings (draft)
 
-A visually secondary ⚙ settings control may appear in a right-aligned, bottom-aligned vertical utility rail with a small version label. Paste controls are located **inside individual run cards**, never in the global utility rail. Neither utility icon needs a border or text label; accessible labels/tooltips remain required. It is a **meta action**, not a numbered workflow step.
+The single gear in the **top header** represents **local presentation preferences**, not GitHub configuration, repository updates, account settings or authorization.
 
-When activated, start a new user-visible settings interaction. Show only settings that are meaningful and actually controllable in the current ChatGPT client.
+Only expose controls that have a real effect in the current response, for example compact/comfortable density, default detail expansion, or whether optional diagnostic metadata is visible. A setting must be wired to the rendered output. If there is nothing meaningful to configure, hide or disable the gear rather than presenting a nonfunctional menu.
 
-## Proposed session preferences
-
-- **Interface mode**: `development` (default) or `minimal`. Future domain profiles may be added.
-- **Supplemental text input**: `paste-on-demand` (default), `always-visible`, or `hidden`. `paste-on-demand` uses direct clipboard access only if the host permits it, otherwise a user-paste field.
-- **Density**: `compact` (default) or `comfortable`.
-- **Color accent**: `host-default` (default); offer additional choices only if supported by the host. Do not promise arbitrary CSS or theme control.
-- **Version information**: display the version that was actually read; optionally show the exact commit/revision if known.
-- **Repository refresh**: future capability, **not implemented**. A user-requested manual re-read may be performed if repository access exists; never imply automatic polling or persistent syncing.
-
-Preferences are session-scoped unless the host provides explicit persistence. Do not assume that a later agent run remembers settings; include required settings in the dispatched self-contained instruction. Do not perform writes, repository sync, or change account settings as a side effect of merely opening settings.
-
-## Example footer
-
-`[run card 0 + 📋] [run card 1 + 📋]  |  ⚙ / AIP 0.3.0`
-
-On a text-only client, show `settings` as a separate textual meta action.
+Preferences are session-local unless the host provides verified persistence. No automatic synchronization or remote writes are implemented.
