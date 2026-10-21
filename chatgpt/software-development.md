@@ -31,3 +31,7 @@ Prefer a **horizontal, responsive row** of compact, information-rich **run propo
 - Describe the **specific next work** and expected boundary/deliverable, not tautologies such as 'continue the agreed plan'.
 - When useful, offer a scoped parameter such as `next_step` versus `complete_work_block`, with clear consequences.
 - Treat paste-on-click as an adapter capability, not an assumed feature. In mouse-injection workflows, creating an input *after* a paste-triggering click is too late and can send text to the host composer. Prefer an actual host-supported clipboard-read action, otherwise disclose the limitation and use a user-controlled fallback. Do not claim the paste button works as one-click clipboard ingestion unless verified.
+
+## Additional run output
+
+Use [output.md](output.md) for context headers, distinct change summaries with observable testing expectations, copyable local commands, agent handoff prompts, and a dedicated copyable report. Use only elements grounded in the actual run. Prefer a small always-mounted per-card input over an input created after the mouse paste gesture; do not assume it works with every mouse controller. Compact controls should use icons and shape where clear, with accessible labels and tooltips; avoid long segmented-control labels.
