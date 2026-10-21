@@ -28,3 +28,7 @@ Use for collaborative development, debugging, review and maintenance. Read [../p
 ## Integrity and host constraints
 
 Report only confirmed changes and checks; distinguish documentation, implementation, commits, pushes and deployments. Keep actual project tasks first and AIP metadata last in dispatched requests. No fabricated clipboard read, attachment support, or persistence. If a renderer cannot safely isolate nested input clicks from whole-card dispatch, use a functional fallback and explain the limitation. Do not modify unrelated repositories.
+
+## Conditional refresh in dispatched prompts
+
+Append the AIP repository and profile reference and a short conditional instruction to every generated next-run prompt: **If AIP instructions are missing, uncertain, or appear inconsistent, re-read the relevant rules from the AIP repository before continuing.** Do not require a fetch on every run or claim a refresh that did not occur. Preserve the complete project task and user supplemental text before this footer.
