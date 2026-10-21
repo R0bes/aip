@@ -22,9 +22,10 @@ Read [AGENTS.md](../AGENTS.md) first. Use this card for work spanning multiple r
 - **Gates are actionable stop boundaries**, not decorative labels. Each gate has an ID, type (`automated-test`, `local-test`, `human-review`, or `external-check`), required evidence/acceptance criteria, and status (`pending`, `passed`, `failed`, `blocked`). For a local test, name the command and environment; for a human gate, name what the user must inspect and explicitly approve. Preserve the distinction between a test run, its result, and an approval.
 - **Develop until gate:** the agent may work through eligible preceding packages, then must stop at the named gate. If the agent can run the specified check in its environment, record the actual result and evidence; if it requires the user’s local machine, report the exact command/instructions and wait for user-provided results. At a human-review gate, stop and request approval; never self-approve. Failed/blocked gates prevent dependent work until resolved and reverified. A gate is not an automatic background executor.
 - A **branch** is a conditional dependency or alternative path; do not silently choose a branch without a verified condition or user decision. Defer complex graph rendering until needed; simple dependency text is sufficient for now.
-- Apply the same [theme tokens](../themes/README.md) as Next Run, GitHub and Proposal. Theme the **entire** compact or detailed Plan card (surface, text, border, spacing, status accents); informational rows have no selection glow. Default is pastel unless the user selects another theme such as Cyberpunk. Theme changes presentation, never plan state or gate approval.
+- Apply the same [theme tokens](../themes/tokens.csv) as Next Run, GitHub and Proposal. Theme the **entire** compact or detailed Plan card (surface, text, border, spacing, status accents); informational rows have no selection glow. Default is pastel unless the user selects another theme such as Cyberpunk. Theme changes presentation, never plan state or gate approval.
 
-## Detailed gate example (illustrative, not verified project status)\n
+## Detailed gate example (illustrative, not verified project status)
+
 - `AP3` Implementieren — active; deliverable: working integration
 - `G1` Local test — pending; command: `make verify` on the user's machine; evidence: command output and exit code. Agent may provide instructions but cannot claim this test passed without evidence.
 - `AP4` Integration — blocked by `G1`; only proceed when the gate is passed.
