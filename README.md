@@ -1,15 +1,18 @@
 # AIP — Agent Interaction Protocol
 
-AIP defines structured human decisions between iterative agent runs: results, next actions, action-local parameters, optional free text, and self-contained follow-up invocations.
+AIP defines portable run-output artifacts and structured human decisions between iterative agent runs: results, changes, copyable commands and handoffs, next actions, parameters, and self-contained follow-up invocations.
 
 **Status:** experimental draft v0.3.0. **Scope:** platform-neutral interaction semantics; not a GUI framework, transport protocol, or authorization system.
 
 ## Layout
 
-- [protocol.md](protocol.md) — normative interaction rules.
+- [protocol.md](protocol.md) — core interaction rules.
+- [output.md](output.md) — run context, change summaries and copyable artifacts.
 - [run-ui.schema.json](run-ui.schema.json) — JSON Schema for action descriptors.
 - [examples/development-run.json](examples/development-run.json) — sample descriptor.
 - [chatgpt/README.md](chatgpt/README.md) — ChatGPT rendering/dispatch guidance.
+- [chatgpt/output.md](chatgpt/output.md) — ChatGPT run-output presentation and copy semantics.
+- [chatgpt/examples.md](chatgpt/examples.md) — example report layout.
 - [chatgpt/software-development.md](chatgpt/software-development.md) — initial profile for collaborative iterative software development.
 - [chatgpt/settings.md](chatgpt/settings.md) — settings interaction (draft; no persistence/sync yet).
 - [AGENTS.md](AGENTS.md) — maintenance instructions.
