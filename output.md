@@ -25,3 +25,7 @@ Offer an optional **plain-text/Markdown export** of the full run report for cros
 ## Rendering
 
 Adapters may implement these elements as compact graphical panels with copy controls. The core specifies meaning and fidelity, not visual layout.
+
+## Improvement proposal and feedback
+
+An agent MAY offer a concise, actionable improvement proposal after a run if there is a substantive reason. Proposals can target the active project or AIP itself and should include expected benefit and trade-off. No proposal is better than a low-value proposal. An optional agent self-rating is explicitly subjective and should not masquerade as external evaluation. Human ratings may be compared to calibrate recommendation thresholds. See [feedback.md](feedback.md).
