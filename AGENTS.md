@@ -16,7 +16,7 @@ AIP governs iterative ChatGPT collaboration on user-owned GitHub repositories. *
 
 ## Visual themes
 
-Use [`themes/README.md`](themes/README.md) as the shared semantic design-token reference for Next Run, GitHub, Plan and Proposal cards. Pastel remains the default; Cyberpunk and Neutral are proposed alternatives. AppBlock CSS can use scoped custom properties; native DIL cannot be globally styled by a CSS file. Theme changes appearance only, never status, data or actions. Plan cards may be compact or detailed; defer complex gates/branches until needed.
+Use [`themes/README.md`](themes/README.md) as the shared semantic design-token reference for Next Run, GitHub, Plan and Proposal cards. Pastel remains the default; Cyberpunk and Neutral are proposed alternatives. AppBlock CSS can use scoped custom properties; native DIL cannot be globally styled by a CSS file. Theme changes appearance only, never status, data or actions. Apply the selected theme consistently across Next Run, GitHub, Plan and Proposal. Plan cards may be compact or detailed. A gate is a stop boundary with explicit type, evidence and status; a 'develop until gate' action must stop for local-only tests or human approval, and cannot advance blocked dependent packages without verified passage. See `components/plan-progress.md`. Complex conditional branch graphs remain deferred.
 
 ## Native UI component templates
 
