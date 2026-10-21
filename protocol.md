@@ -48,3 +48,7 @@ Prefer compact, information-rich action cards for parameterless actions and comp
 ## Portability and versioning
 
 The same descriptor may be rendered by ChatGPT, CLI/text, or a future A2UI adapter. JSON Schema validates shape, not all semantic constraints (e.g. uniqueness, recommendation count, continuation meaning). Use semantic versions: compatible additions bump minor, breaking semantics bump major. Conformance is not claimed without dedicated tests.
+
+## Attachment capability (future)
+
+A follow-up action may need screenshots or other files. Attachment support is **not implemented** in the v0.3.0 selector schema. Adapters must not show an upload control or promise transfer unless the host provides a real attachment mechanism. Future versions should bind attachments to the selected action, preserve their identities and permission boundaries, and describe unavailable transfers clearly.
