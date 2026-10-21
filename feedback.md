@@ -21,3 +21,7 @@ Each self-contained follow-up request SHOULD identify the AIP version and the re
 ## Rating interpretation
 
 A rating is not actionable without a named dimension and a defined scale. Separate **run outcome quality** from **interface relevance** (whether cards, options, and suggestions earned their space). Do not infer precise option relevance from an undifferentiated overall 4/5. Store agent estimates and human ratings as separate observations; a difference is a calibration signal, not proof that either estimate is correct. Keep both ratings optional.
+
+## Per-card lightweight feedback
+
+A renderer MAY expose thumbs-up/thumbs-down on each card independently. A rating means only that the particular card was useful or unhelpful, unless a different criterion is explicitly labeled. Unrated cards carry no negative signal. Keep feedback unobtrusive and never require it to proceed. A feedback click must not dispatch a next run or accidentally toggle card details. Distinguish user-provided ratings from agent self-assessment; do not claim that a click persists to a server without an actual persistence mechanism.
