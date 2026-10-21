@@ -1,8 +1,11 @@
 // Generation reference: follow ../../prompts/next-run.md for the minimal stateless action handoff.
-{@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{}}})}
+{@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{},"1":{}}})}
 {@body const [instruction,setInstruction]=DIL.useState("")}
 // Use the shared top-level theme state; do not create another theme state here.
-{@body const actions=[{id:"0",title:"Weiter",task:"Continue the agreed task."}]}
+{@body const actions=[
+  {id:"0",title:"Weiter",task:"Continue the agreed task."},
+  {id:"1",title:"Prüfen",task:"Review the current state and risks."}
+]}
 <box gap={2}>
   <AppBlock app_block_id="aip-cards-UNIQUE" title="Next Run" variant="inline"
     bind={{value:selection,setValue:setSelection,theme}}>
