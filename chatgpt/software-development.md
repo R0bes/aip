@@ -19,7 +19,7 @@ Use for collaborative development, debugging, review and maintenance. Read [../p
 
 - Use compact, horizontally arranged responsive cards of content-dependent width. Put a consistent icon and specific task title on the same line, with shortcut key small in a corner.
 - **The main surface of each next-run card is clickable to dispatch**, including when it has supplemental text. Clicking the text field must **never** dispatch.
-- Use exactly **one supplemental-text field per card**. When empty, show a prominent, correctly oriented copy glyph **inside the field**, not a separate icon or button. This icon is a visual cue for paste; it does not read the clipboard.
+- Use exactly **one supplemental-text field per card**. When empty, show a prominent, correctly oriented copy glyph **as the field's placeholder text**, not a separate icon or button. This icon is a visual cue for paste; it does not read the clipboard.
 - The user clicks the field and types/pastes directly into it. **Once text exists, show the complete text normally in the same field, without truncation, preview, expansion, collapse, or an editing-mode toggle.** Grow the field as needed for multiline text; preserve all text verbatim.
 - No separate tiny + field, second preview, helper caption, pencil, or confirm/close button. Avoid decorative borders around the text if the host permits, while keeping a usable focus target.
 - Only show a scope selector for genuinely distinct, concretely defined work packages. Do not automatically offer 'one step / whole stack'.
