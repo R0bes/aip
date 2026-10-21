@@ -12,6 +12,6 @@ AIP is a lightweight convention for **iterative ChatGPT collaboration on user-ow
 - [Next Run SVG](assets/next-run.svg) — accepted native dispatch icon.
 - [Transcription input SVG](assets/transcription-input.svg) — accepted idle icon of the morphing text input.
 
-Each component has a `COMPONENT.md` entry point. The Next Run component additionally separates DIL composition guidance and reusable HTML sources; simple components keep short examples in their own definition. These are agent-facing references, not a runtime or tool-call API.
+Each component has a `COMPONENT.md` entry point. Each component separates its `COMPONENT.md` contract from a `.dil` generation reference. Next Run additionally includes reusable HTML sources for cards and the morphing input. The `.dil` suffix is a source convention, not a standalone executable format. These are agent-facing references, not a runtime or tool-call API.
 
 Themes are ephemeral and propagated via next-run parameters. No AIP settings persistence, personal agent-rule controls, additional runtime or infrastructure.
