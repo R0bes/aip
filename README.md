@@ -18,6 +18,6 @@ The operative profile is [`chatgpt/quick.md`](chatgpt/quick.md). Read and **appl
 
 ## Out of current scope
 
-General-purpose adapters, standalone HTML reports, JSON report protocols, settings, ratings, exports and synchronization are not product goals. Existing experimental files are retained temporarily for review; they do not define the active workflow.
+General-purpose adapters, standalone HTML reports, JSON report protocols, settings, ratings, exports and synchronization are not product goals. Obsolete experimental renderer, schemas, examples, settings and feedback files have been removed.
 
 See [`AGENTS.md`](AGENTS.md) for repository maintenance guidance.
