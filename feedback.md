@@ -25,3 +25,7 @@ A rating is not actionable without a named dimension and a defined scale. Separa
 ## Per-card lightweight feedback
 
 A renderer MAY expose thumbs-up/thumbs-down on each card independently. A rating means only that the particular card was useful or unhelpful, unless a different criterion is explicitly labeled. Unrated cards carry no negative signal. Keep feedback unobtrusive and never require it to proceed. A feedback click must not dispatch a next run or accidentally toggle card details. Distinguish user-provided ratings from agent self-assessment; do not claim that a click persists to a server without an actual persistence mechanism.
+
+## Feedback interpretation
+
+Thumbs-up/down is scoped to the particular card and its presentation/utility, not automatically to the underlying code change or full textual answer. Do not interpret unrated cards as neutral approval or rejection. Keep all per-card ratings independent, and never claim they were stored remotely without an actual write.
