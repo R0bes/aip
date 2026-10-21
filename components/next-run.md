@@ -1,5 +1,13 @@
 # Next Run — accepted hybrid template
 
+## Shared theme application
+
+Apply [theme tokens](../themes/README.md) to **the whole Next Run composition**, not only the cards. The chosen theme applies to card surfaces, text, border, selected outline/glow, inline controls, palette previews where appropriate, and the shared input's text/placeholder. Keep the rocket native and accessible; its host styling cannot be overridden with AppBlock CSS. The current four-card HTML below is a **Pastel example**: when a different theme (e.g. Cyberpunk) is selected, replace hardcoded colors with the corresponding scoped CSS variables on the AppBlock root. Do not pretend a stylesheet can cross AppBlock/native boundaries.
+
+Suggested scoped variables: `--aip-surface`, `--aip-surface-alt`, `--aip-text`, `--aip-muted`, `--aip-border`, `--aip-accent`, `--aip-glow`, `--aip-radius`. Example: `background:linear-gradient(145deg,var(--aip-surface),var(--aip-surface-alt))`; `color:var(--aip-text)`; selected card `border-color:var(--aip-accent)` and `box-shadow:0 0 0 2px var(--aip-glow)`. Keep the optional color-palette action's user-picked colors distinct from the global AIP theme. Pass the selected theme name in the next-run parameters or context when relevant; never claim persistence.
+
+For plan-aware actions such as **"Develop until gate"**, include the gate ID, type, required evidence, stop conditions, and status snapshot in the self-contained handoff. Do not assume the agent can run local-only commands or approve human gates; stop and request evidence/approval when needed.
+
 Read [AGENTS.md](../AGENTS.md) first. This is a **ChatGPT response-generation example**, not a standalone renderer, package, or design system. Replace sample tasks, repository/ref, IDs and text with grounded values. The established pastel/glow style is the default.
 
 ## Contract
