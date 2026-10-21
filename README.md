@@ -9,6 +9,8 @@ AIP defines portable run-output artifacts and structured human decisions between
 - [protocol.md](protocol.md) — core interaction rules.
 - [output.md](output.md) — run context, change summaries and copyable artifacts.
 - [run-ui.schema.json](run-ui.schema.json) — JSON Schema for action descriptors.
+- [report.schema.json](report.schema.json) — JSON Schema for complete reports.
+- [examples/report.json](examples/report.json) — structured full-report example.
 - [examples/development-run.json](examples/development-run.json) — sample descriptor.
 - [chatgpt/README.md](chatgpt/README.md) — ChatGPT rendering/dispatch guidance.
 - [chatgpt/output.md](chatgpt/output.md) — ChatGPT run-output presentation and copy semantics.
