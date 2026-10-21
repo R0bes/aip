@@ -1,7 +1,8 @@
+// Generation reference: follow ../../prompts/next-run.md for the minimal stateless action handoff.
 {@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{}}})}
 {@body const [instruction,setInstruction]=DIL.useState("")}
 // Use the shared top-level theme state; do not create another theme state here.
-{@body const actions=[{id:"0",title:"Weiter",task:"Continue the agreed task.",context:"Preserve approved UI."}]}
+{@body const actions=[{id:"0",title:"Weiter",task:"Continue the agreed task."}]}
 <box gap={2}>
   <AppBlock app_block_id="aip-cards-UNIQUE" title="Next Run" variant="inline"
     bind={{value:selection,setValue:setSelection,theme}}>
@@ -24,9 +25,9 @@
         const params={...(selection.params[key]||{}),theme};
         GenUI.issueNewTurn(
           "Repository: R0bes/aip\nBranch: main\nProposed task: "+action.task+
-          "\nAction: "+action.title+"\nKey: "+key+
+          "\nAction: "+key+" — "+action.title+
           "\nParameters: "+JSON.stringify(params)+
-          "\nProposal context: "+action.context+
+          
           "\n\nUser instruction (verbatim):\n"+instruction+
           "\n\n[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]"+
           "\nRead R0bes/aip/AGENTS.md at run start if accessible; apply it throughout this run and carry this instruction into every next-run prompt. If unavailable, say so; never claim an unperformed refresh."
