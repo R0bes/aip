@@ -35,22 +35,7 @@ A corresponding Next Run card may say **“Bis G1 entwickeln”**. Its handoff m
 
 ## Compact native DIL example
 
-```jsx
-<box border={{size:1,color:"default"}} radius="xl" padding={3} gap={3}>
-  <row align="center" justify="between">
-    <row align="center" gap={2}><icon name="list-checks"/><text strong>Plan · AIP Kartenfamilie</text></row>
-    <text color="secondary" size="xs">2 / 5 erledigt</text>
-  </row>
-  <text size="sm" color="secondary">GitHub-Ansichten und eine verlässliche Fortschrittsanzeige für mehrere Entwicklungsruns etablieren.</text>
-  <box gap={2}>
-    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP1 · Anforderungen</text><text size="xs" color="secondary">Kartenarten und Statusmodell festlegen · Erledigt</text></box></row>
-    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP2 · Vorlagen</text><text size="xs" color="secondary">DIL-Muster erstellen · Erledigt</text></box></row>
-    <row align="start" gap={2}><icon name="circle-dot" color="info"/><box flex="1" gap={1}><text weight="medium" size="sm">AP3 · Interaktion</text><text size="xs" color="secondary">Planpunkt als Next Run übergeben · In Arbeit</text></box></row>
-    <row align="start" gap={2}><icon name="circle" color="secondary"/><box flex="1" gap={1}><text weight="medium" size="sm">AP4 · Integration</text><text size="xs" color="secondary">GitHub- und Plan-Karten zusammen anzeigen · Offen</text></box></row>
-    <row align="start" gap={2}><icon name="alert-circle" color="warning"/><box flex="1" gap={1}><text weight="medium" size="sm">AP5 · Abnahme</text><text size="xs" color="secondary">End-to-End-UI prüfen · Blockiert bis AP4</text></box></row>
-  </box>
-</box>
-```
+See [progress.dil](progress.dil) — reference variant 1; adapt data and theme to the current run.
 
 The five packages and statuses above are **demonstration data**, not claims about actual project progress. Replace with grounded current plan data; avoid arbitrary decorative progress. For progress, the verified `done / total` counter is sufficient. Add a visual bar only when supported and grounded in the same counts.
 
