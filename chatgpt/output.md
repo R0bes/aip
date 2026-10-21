@@ -15,3 +15,7 @@ Use one top header for repository/ref, optional run reference, AIP version and i
 ## Narrative placement and expandable cards
 
 Render the outlined context header at the start of the response. Place result cards inline with surrounding ordinary prose when helpful, rather than forcing all cards into a single block. Size each card to its content; a GitHub change card need not span the whole page. A result card may expand/collapse its detailed evidence on card click; copy and feedback controls remain independent. Next-run proposal cards are always the last rendered element, with nothing below them.
+
+## Whole-card affordances
+
+A result card's main surface expands/collapses details on click; avoid a separate chevron button. Show hover/focus feedback, and keep embedded copy and feedback controls independent. Expansion is optional; do not fabricate hidden content. Header and cards are live components of the answer, not an illustrative preview.
