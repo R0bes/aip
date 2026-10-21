@@ -89,7 +89,7 @@ document.querySelectorAll('.action').forEach(card=>{
   const payload={protocol_version:report.protocol_version,context:report.next_run.context,action_id:action.id,key:action.key,instruction:action.instruction,parameters:Object.fromEntries((action.parameters||[]).map(p=>[p.id,p.default])),supplemental_text};
   const repoName=report.header.repository||'unspecified';
   const profile='chatgpt/software-development.md';
-  const refresh='If AIP instructions are missing, uncertain, or inconsistent, re-read the relevant rules from the AIP repository before continuing. Do not claim a refresh unless performed.';
+  const refresh='Read the AIP ChatGPT profile from the repository at the start of this run when access is available. Do not claim a refresh unless performed.';
   const promptParts=[`Repository: ${repoName}`,report.header.ref?`Branch: ${report.header.ref}`:'',`Task: ${action.instruction}`,`Action: ${action.id} (key ${action.key})`,`Context: ${report.next_run.context}`,`Parameters: ${JSON.stringify(payload.parameters)}`,`Supplemental text (verbatim):\\n${supplemental_text}`,`[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]`,refresh];
   payload.prompt=promptParts.filter(Boolean).join('\\n');
   // No implicit agent execution: host must handle this explicit event.
