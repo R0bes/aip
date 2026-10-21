@@ -24,9 +24,8 @@
         if(!action)return;
         const params={...(selection.params[key]||{}),theme};
         GenUI.issueNewTurn(
-          "Repository: R0bes/aip\nBranch: main\nProposed task: "+action.task+
-          "\nAction: "+key+" — "+action.title+
-          "\nParameters: "+JSON.stringify(params)+
+          "Repository: R0bes/aip\nRef: main\n\nAction: "+key+" — "+action.title+"\nTask: "+action.task+
+                    "\nParameters: "+JSON.stringify(params)+
           
           "\n\nUser instruction (verbatim):\n"+instruction+
           "\n\n[aip: 0.3.0; repo: R0bes/aip; instructions: AGENTS.md]"+
