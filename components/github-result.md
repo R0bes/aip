@@ -1,19 +1,71 @@
-# GitHub result card · native UI template
+# GitHub cards — verified repository views
 
-Use only for verified repository operations. Fill placeholders with grounded values; omit unavailable fields. This is a generation template, not importable JSX.
+Read [AGENTS.md](../AGENTS.md) first. **GitHub cards are a family of contextual views**, not one oversized card. Render only the views relevant to the run. This is DIL generation guidance, not an importable component. Match the existing compact visual language without imposing Next Run's selection controls on read-only results.
+
+## Shared rules
+
+- Repository and ref must be grounded in fetched data. Distinguish **verified**, **pending/unverified**, and **blocked**; never invent a check result, PR state, branch relationship or commit.
+- Choose from **Change result**, **Open pull requests**, **Branches**. The latter two are repository snapshots, not automatically complete: show retrieval scope/time when relevant, and say when pagination or access limits prevent completeness.
+- Each card has a clear icon, specific title, concise useful rows and small secondary metadata. Link PRs/branches/commits to verified GitHub URLs where available. Use small neutral labels; avoid a rainbow of statuses.
+- Use separate cards when information differs in purpose. Avoid empty sections. The **Plan / Progress** card is a separate component in [plan-progress.md](plan-progress.md).
+- Prefer native DIL components for simple cards; no custom HTML, duplicated renderers, or additional persistence.
+
+## Variant A: verified change result
 
 ```jsx
-<box border={{size:2,color:"default"}} radius="lg" padding={3} gap={2}>
+<box border={{size:1,color:"default"}} radius="xl" padding={3} gap={2}>
   <row align="center" justify="between">
-    <row align="center" gap={2}>
-      <icon name="github"/>
-      <text strong>{resultTitle}</text>
-    </row>
-    <badge>{verifiedStatus}</badge>
+    <row align="center" gap={2}><icon name="github"/><text strong>Next Run · Vorlage konsolidiert</text></row>
+    <badge color="success">Committed</badge>
   </row>
-  <text size="sm">{actualChanges}</text>
-  <text color="secondary" size="xs">{repository} · {ref} · {commitOrCheckDetails}</text>
+  <text color="secondary" size="xs">R0bes/aip · main</text>
+  <divider color="subtle"/>
+  <text size="sm">• Vollständiges Beispiel ergänzt</text>
+  <text size="sm">• Parameterübergabe dokumentiert</text>
+  <row align="center" justify="between">
+    <text size="xs" color="secondary">Commit: <code>9e56e54</code></text>
+    <text size="xs" color="secondary">UI-Test: nicht ausgeführt</text>
+  </row>
 </box>
 ```
 
-Replace all placeholders with actual content; omit the badge if no verified status. Never imply checks ran, changes were pushed, or commits exist without evidence. Ordinary prose is fine when a card adds no value.
+The values above illustrate a previously verified change. Replace them with **current, independently verified facts**; omit badges and fields without evidence.
+
+## Variant B: open pull requests
+
+```jsx
+<box border={{size:1,color:"default"}} radius="xl" padding={3} gap={2}>
+  <row align="center" gap={2}><icon name="git-pull-request"/><text strong>Offene Pull Requests</text></row>
+  <text size="xs" color="secondary">Repository · Abfrageumfang und Zeitpunkt</text>
+  <divider color="subtle"/>
+  <row justify="between" align="center">
+    <box gap={1}><text weight="medium">#25 · Calendar Read Gateway</text><text size="xs" color="secondary">feat/calendar-read-gateway → integration/phase2</text></box>
+    <badge>Draft</badge>
+  </row>
+  <row justify="between" align="center">
+    <box gap={1}><text weight="medium">#26 · CI vereinfachen</text><text size="xs" color="secondary">chore/affected-ci → main</text></box>
+    <badge>Open</badge>
+  </row>
+</box>
+```
+
+**Illustrative rows only, not a live PR lookup.** Populate from actual GitHub results; link PRs when URL is verified. Useful fields: number/title, source → target, draft/open, review/check state **only if retrieved**, and the total when the query is complete. No speculative mergeability.
+
+## Variant C: branches
+
+```jsx
+<box border={{size:1,color:"default"}} radius="xl" padding={3} gap={2}>
+  <row align="center" gap={2}><icon name="git-branch"/><text strong>Branches</text></row>
+  <text size="xs" color="secondary">Repository · Stand der letzten Abfrage</text>
+  <divider color="subtle"/>
+  <row align="center" justify="between"><text size="sm"><code>main</code></text><badge>Default</badge></row>
+  <row align="center" justify="between"><text size="sm"><code>integration/phase2</code></text><text size="xs" color="secondary">Integration</text></row>
+  <row align="center" justify="between"><text size="sm"><code>feat/calendar-read-gateway</code></text><text size="xs" color="secondary">Feature</text></row>
+</box>
+```
+
+**Illustrative rows only.** Show branches actually returned; never infer their existence, freshness, or relationship from previous conversations. When branch lists are partial, explicitly label them as partial. For large repositories, filter to relevant branches and offer a more comprehensive lookup instead of a huge card.
+
+## Choosing the view
+
+A completed edit usually calls for **Change result**. A request about review/merge work calls for **Open PRs**. A request about integration or active development lines calls for **Branches**. Combine PRs and branches as two adjacent cards when both matter; do not make every response a GitHub dashboard.
