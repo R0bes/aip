@@ -87,11 +87,11 @@ document.querySelectorAll('.action').forEach(card=>{
   const action=report.next_run.actions.find(a=>a.id===card.dataset.action);
   const supplemental_text=card.querySelector('textarea').value;
   const payload={protocol_version:report.protocol_version,context:report.next_run.context,action_id:action.id,key:action.key,instruction:action.instruction,parameters:Object.fromEntries((action.parameters||[]).map(p=>[p.id,p.default])),supplemental_text};
-  const repoName=report.header.repository||'R0bes/aip';
+  const repoName=report.header.repository||'unspecified';
   const profile='chatgpt/software-development.md';
   const refresh='If AIP instructions are missing, uncertain, or inconsistent, re-read the relevant rules from the AIP repository before continuing. Do not claim a refresh unless performed.';
-  const promptParts=[`Repository: ${repoName}`,report.header.ref?`Branch: ${report.header.ref}`:'',`Task: ${action.instruction}`,`Action: ${action.id} (key ${action.key})`,`Context: ${report.next_run.context}`,`Parameters: ${JSON.stringify(payload.parameters)}`,`Supplemental text (verbatim):\n${supplemental_text}`,`[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]`,refresh];
-  payload.prompt=promptParts.filter(Boolean).join('\n');
+  const promptParts=[`Repository: ${repoName}`,report.header.ref?`Branch: ${report.header.ref}`:'',`Task: ${action.instruction}`,`Action: ${action.id} (key ${action.key})`,`Context: ${report.next_run.context}`,`Parameters: ${JSON.stringify(payload.parameters)}`,`Supplemental text (verbatim):\\n${supplemental_text}`,`[aip: ${report.protocol_version}; repo: ${repoName}; profile: ${profile}]`,refresh];
+  payload.prompt=promptParts.filter(Boolean).join('\\n');
   // No implicit agent execution: host must handle this explicit event.
   card.dispatchEvent(new CustomEvent('aip:invoke',{bubbles:true,detail:payload}));
   document.getElementById('invocation').textContent=JSON.stringify(payload,null,2);
