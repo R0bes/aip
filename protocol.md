@@ -1,6 +1,6 @@
 # AIP — Agent Interaction Protocol
 
-Version: **0.2.0 (draft)**
+Version: **0.3.0 (draft)**
 
 ## Purpose
 
@@ -16,12 +16,18 @@ Report completed work, verification actually performed, blockers, and remaining 
 - Key `0` is reserved for `continue`: continue the agreed plan without unrequested scope expansion. Do not invent continuation when no work remains.
 - Other actions must represent materially different choices. No fixed count is required.
 - At most one action may be marked `recommended`; this is advisory only.
+- Action IDs, keys, and parameter IDs within an action must be unique. If key `0` exists, its ID MUST be `continue`; any `continue` action MUST use key `0`. For this development profile, key `0` is required when continuation is meaningful.
+- A selector may include optional `meta` information such as a `settings` action and a version reference. Meta actions are not numbered workflow choices; they must still be explicitly invoked.
 - Optional descriptions/icons are presentation hints. Preconditions do not grant authorization.
 - Action-local parameters may be `boolean`, bounded `integer`, `enum`, or `text`. Text can be multiline, optional, and defaults to an empty string.
 
 ## Invocation
 
 Only a genuine user gesture invokes an action. Capture the selected action and its current parameters, then dispatch a **new, self-contained user request** with protocol version, stable action ID, display key, complete instruction, explicit parameter values, verbatim extra user text, and enough project/run context to resume independently. Never rely on hidden widget state. The host's safety, permissions, and confirmation requirements still apply.
+
+## Version reference and settings
+
+An optional compact, unobtrusive version reference can identify the exact protocol release or revision used (e.g. `AIP 0.3.0 · abc1234`). It is informational, not evidence that the agent fetched the latest release. An optional settings entry may request a separate settings interaction; changing preferences does not itself perform repository updates or grant access. Live synchronization, persistence and automatic updates are out of scope for this draft.
 
 ## Text fallback
 
