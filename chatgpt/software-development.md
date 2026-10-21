@@ -19,8 +19,8 @@ Applies to collaborative software development, debugging, review and maintenance
 ## Next-run cards — restore the established mouse-first design
 
 - Horizontal, responsive cards of coordinated but content-dependent width. Leading icon and concise task title on one line; shortcut key small in the corner. Description names concrete work and deliverables.
-- For a simple action without controls, the **whole card** is the dispatch target. For an action with embedded editable controls, isolate input interactions; prefer whole-card dispatch where safely possible, otherwise use a small bottom-right icon-only check control, not 'Go' text or a full-width 'start' button.
-- A small always-mounted  input per card supports mouse-injected paste. Once captured, show a truncated preview of the text **in the same editable region**; clicking expands that field in place to edit. Preserve the complete value for dispatch. No second textarea, pencil or redundant copy of the text.
+- For a simple action without controls, the **whole card** is the dispatch target. **The whole action card is the dispatch target, including cards with supplemental text.** Isolate tiny input and expandable text preview as independent nested controls so clicks there never dispatch; clicks on the rest of the card dispatch. Do not replace whole-card dispatch with a small bottom-right check control.
+- A small always-mounted  input per card supports mouse-injected paste. Once captured, clear the tiny capture field and show a **separate, compact truncated text preview BELOW the main card description**. Clicking the preview expands it to edit the full value. Preserve the complete text for dispatch. The tiny input remains available for additional paste. No edit pencil and no permanently expanded text area.
 - Only show scope selection when there are materially different, **explicitly defined** work packages; name the steps covered. Never repeatedly show a generic 'next step / whole stack' toggle.
 - Number of action cards is based on useful alternatives, not a fixed quota. Key `0` represents continuation when meaningful. Keep the settings control in the header, not a bottom rail.
 
