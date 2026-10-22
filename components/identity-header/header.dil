@@ -1,11 +1,19 @@
-// identity-header reference variant 1 (illustrative; adapt values and theme)
-<box background="#141824" border={{size:1,color:"#4D6075"}} radius="md" padding={{x:3,y:2}} theme="dark">
+// Identity header generation reference: replace labels with grounded task context.
+// Work repo != AIP source repo. Omit unknown work repo or branch.
+// Colors below illustrate Pastel; map selected theme tokens for other themes.
+// The settings icon is illustrative: the generated full response must wire
+// a single functional settings disclosure and shared theme state.
+<box background="#EEE5FA" border={{size:1,color:"#B8ACCE"}} radius="lg" padding={3} theme="light" gap={2}>
+  <row align="center" gap={2} wrap="wrap">
+    <icon name="bot" color="#866ACB"/>
+    <text size="sm" weight="medium" color="#35374D">JSON Analyzer</text>
+    <icon name="chevron-right" size="xs" color="#626B81"/>
+    <text size="sm" color="#35374D">R0bes/json-inspect</text>
+    <spacer/>
+    <icon name="settings" color="#626B81"/>
+  </row>
   <row align="center" gap={2}>
-    <icon name="git-branch" color="#50E4DD" size="sm"/>
-    <text size="sm" weight="medium" color="#EEF5FF">AIP</text>
-    <text size="xs" color="#A7B7C9">·</text>
-    <text size="sm" color="#EEF5FF">R0bes/aip</text>
-    <text size="xs" color="#A7B7C9">·</text>
-    <text size="sm" color="#50E4DD">main</text>
+    <icon name="workflow" color="#866ACB" size="sm"/>
+    <text size="sm" color="#626B81">AP2 · Define JSON metrics</text>
   </row>
 </box>
