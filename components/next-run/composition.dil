@@ -28,7 +28,7 @@
         const action=actions.find(a=>a.id===key);
         if(!action)return;
         const params=selection.params[key]||{};
-        const workLines=(typeof workProject==="string"&&workProject?"Project: "+workProject+"\\n":"")+(typeof workRef==="string"&&workRef?"Ref: "+workRef+"\\n":"");
+        const workLines=(typeof workProject==="string"&&workProject?"Project: "+workProject+"\n":"")+(typeof workRef==="string"&&workRef?"Ref: "+workRef+"\n":"");
         GenUI.issueNewTurn(
           workLines+"\nAction: "+key+" — "+action.title+"\nTask: "+action.task+
           "\nParameters: "+JSON.stringify(params)+
