@@ -1,8 +1,13 @@
-// Generation reference: follow ../../prompts/next-run.md for the minimal stateless action handoff.
-{@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{}}})}
+// Generation reference: follow ../../prompts/next-run.md for stateless task handoff.
+// workProject/workRef are actual assignment values (optional), NOT the AIP source.
+// theme is shared presentation state, separate from action parameters.
+{@body const [selection,setSelection]=DIL.useState({selected:"0",params:{"0":{},"1":{}}})}
 {@body const [instruction,setInstruction]=DIL.useState("")}
 // Use the shared top-level theme state; do not create another theme state here.
-{@body const actions=[{id:"0",title:"Weiter",task:"Continue the agreed task."}]}
+{@body const actions=[
+  {id:"0",title:"Weiter",task:"Continue the agreed task."},
+  {id:"1",title:"Prüfen",task:"Review the current state and risks."}
+]}
 <box gap={2}>
   <AppBlock app_block_id="aip-cards-UNIQUE" title="Next Run" variant="inline"
     bind={{value:selection,setValue:setSelection,theme}}>
@@ -22,7 +27,8 @@
         const key=prefix&&actions.some(a=>a.id===prefix[1])?prefix[1]:selection.selected;
         const action=actions.find(a=>a.id===key);
         if(!action)return;
-        const params={...(selection.params[key]||{}),theme};
+        const params=selection.params[key]||{};
+        const workLines=(typeof workProject==="string"&&workProject?"Project: "+workProject+"\\n":"")+(typeof workRef==="string"&&workRef?"Ref: "+workRef+"\\n":"");
         GenUI.issueNewTurn(
           "Repository: R0bes/aip\nRef: main\n\nAction: "+key+" — "+action.title+"\nTask: "+action.task+
                     "\nParameters: "+JSON.stringify(params)+
