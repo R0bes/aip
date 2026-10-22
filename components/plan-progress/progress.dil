@@ -1,15 +1,18 @@
-// plan-progress reference variant 1 (illustrative; adapt values and theme)
-<box border={{size:1,color:"default"}} radius="xl" padding={3} gap={3}>
+// plan-progress reference variant 1 (illustrative; adapt values and plan state)
+// `theme` is shared top-level state; colors below map to themes/themes.css.
+{@body const planColors={Pastel:{bg:"#EEE5FA",fg:"#35374D",muted:"#626B81",border:"#B8ACCE",accent:"#866ACB"},Cyberpunk:{bg:"#141824",fg:"#EEF5FF",muted:"#A7B7C9",border:"#4D6075",accent:"#50E4DD"},Neutral:{bg:"#F4F5F7",fg:"#232833",muted:"#626B76",border:"#C5CAD2",accent:"#4B647D"}}[theme]}
+
+<box background={planColors.bg} border={{size:1,color:planColors.border}} radius="xl" padding={3} gap={3}>
   <row align="center" justify="between">
-    <row align="center" gap={2}><icon name="list-checks"/><text strong>Plan · AIP Kartenfamilie</text></row>
-    <text color="secondary" size="xs">2 / 5 erledigt</text>
+    <row align="center" gap={2}><icon name="list-checks" color={planColors.accent}/><text strong color={planColors.fg}>Plan · AIP Kartenfamilie</text></row>
+    <text color={planColors.muted} size="xs">2 / 5 erledigt</text>
   </row>
-  <text size="sm" color="secondary">GitHub-Ansichten und eine verlässliche Fortschrittsanzeige für mehrere Entwicklungsruns etablieren.</text>
+  <text size="sm" color={planColors.muted}>GitHub-Ansichten und eine verlässliche Fortschrittsanzeige für mehrere Entwicklungsruns etablieren.</text>
   <box gap={2}>
-    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP1 · Anforderungen</text><text size="xs" color="secondary">Kartenarten und Statusmodell festlegen · Erledigt</text></box></row>
-    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm">AP2 · Vorlagen</text><text size="xs" color="secondary">DIL-Muster erstellen · Erledigt</text></box></row>
-    <row align="start" gap={2}><icon name="circle-dot" color="info"/><box flex="1" gap={1}><text weight="medium" size="sm">AP3 · Interaktion</text><text size="xs" color="secondary">Planpunkt als Next Run übergeben · In Arbeit</text></box></row>
-    <row align="start" gap={2}><icon name="circle" color="secondary"/><box flex="1" gap={1}><text weight="medium" size="sm">AP4 · Integration</text><text size="xs" color="secondary">GitHub- und Plan-Karten zusammen anzeigen · Offen</text></box></row>
-    <row align="start" gap={2}><icon name="alert-circle" color="warning"/><box flex="1" gap={1}><text weight="medium" size="sm">AP5 · Abnahme</text><text size="xs" color="secondary">End-to-End-UI prüfen · Blockiert bis AP4</text></box></row>
+    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm" color={planColors.fg}>AP1 · Anforderungen</text><text size="xs" color={planColors.muted}>Kartenarten und Statusmodell festlegen · Erledigt</text></box></row>
+    <row align="start" gap={2}><icon name="check-circle-2" color="success"/><box flex="1" gap={1}><text weight="medium" size="sm" color={planColors.fg}>AP2 · Vorlagen</text><text size="xs" color={planColors.muted}>DIL-Muster erstellen · Erledigt</text></box></row>
+    <row align="start" gap={2}><icon name="circle-dot" color="info"/><box flex="1" gap={1}><text weight="medium" size="sm" color={planColors.fg}>AP3 · Interaktion</text><text size="xs" color={planColors.muted}>Planpunkt als Next Run übergeben · In Arbeit</text></box></row>
+    <row align="start" gap={2}><icon name="circle" color={planColors.muted}/><box flex="1" gap={1}><text weight="medium" size="sm" color={planColors.fg}>AP4 · Integration</text><text size="xs" color={planColors.muted}>GitHub- und Plan-Karten zusammen anzeigen · Offen</text></box></row>
+    <row align="start" gap={2}><icon name="alert-circle" color="warning"/><box flex="1" gap={1}><text weight="medium" size="sm" color={planColors.fg}>AP5 · Abnahme</text><text size="xs" color={planColors.muted}>End-to-End-UI prüfen · Blockiert bis AP4</text></box></row>
   </box>
 </box>
