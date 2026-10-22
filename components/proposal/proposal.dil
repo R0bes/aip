@@ -1,12 +1,15 @@
-// proposal reference variant 1 (illustrative; adapt values and theme)
-<box border={{size:2,color:"default"}} radius="lg" padding={3} gap={2}>
+// proposal reference variant 1 (illustrative; adapt values and proposal handoff)
+// `theme` is shared top-level state; colors below map to themes/themes.css.
+{@body const proposalColors={Pastel:{bg:"#EEE5FA",fg:"#35374D",muted:"#626B81",border:"#B8ACCE",accent:"#866ACB"},Cyberpunk:{bg:"#141824",fg:"#EEF5FF",muted:"#A7B7C9",border:"#4D6075",accent:"#50E4DD"},Neutral:{bg:"#F4F5F7",fg:"#232833",muted:"#626B76",border:"#C5CAD2",accent:"#4B647D"}}[theme]}
+
+<box background={proposalColors.bg} border={{size:1,color:proposalColors.border}} radius="lg" padding={3} gap={2}>
   <row align="start" justify="between">
     <box flex="1" gap={1}>
-      <text strong>{specificIdeaTitle}</text>
-      <text size="sm" color="secondary">{benefitAndTradeoff}</text>
+      <text strong color={proposalColors.fg}>{specificIdeaTitle}</text>
+      <text size="sm" color={proposalColors.muted}>{benefitAndTradeoff}</text>
     </box>
     <pressable tooltip="Vorschlag annehmen" onClick={() => GenUI.issueNewTurn(proposalHandoff)}>
-      <icon name="thumbs-up" size="lg"/>
+      <icon name="thumbs-up" size="lg" color={proposalColors.accent}/>
     </pressable>
   </row>
 </box>
